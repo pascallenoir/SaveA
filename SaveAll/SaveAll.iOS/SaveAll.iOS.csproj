@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D16231E3-0AE5-4B3A-88C9-5FB2BD23C6AA}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SaveAll.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>SaveAll.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="controlsIos\EntryRenderersIos.cs" />
+    <Compile Include="controlsIos\MaterialFrameRenderer.cs" />
+    <Compile Include="controlsIos\ExtendedViewCellRendererAndroid.cs" />
+    <Compile Include="controlsIos\FloatingActionButtonRenderer.cs" />
+    <Compile Include="controlsIos\EntryRendererMenuIos.cs" />
+    <Compile Include="controlsIos\EntryRendererPickerMenuIos.cs" />
+    <Compile Include="controlsIos\EntryRendererDatePickerIos.cs" />
+    <Compile Include="controlsIos\EntryRendererProfilIOS.cs" />
+    <Compile Include="controlsIos\EntryRendererPickerProfilIOS.cs" />
+    <Compile Include="controlsIos\EntryRendererDatePickerProfilIOS.cs" />
+    <Compile Include="controlsIos\EntryRendererIOSBas.cs" />
+    <Compile Include="controlsIos\EntryRendererIOSHaut.cs" />
+    <Compile Include="controlsIos\PhotoPickerService.cs" />
+    <Compile Include="controlsIos\MultiMediaPickerService.cs" />
+    <Compile Include="PlatformSpecifics\LocalFileProvider.cs" />
+    <Compile Include="controlsIos\NSDataStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AiForms.SettingsView">
+      <Version>1.0.9</Version>
+    </PackageReference>
+    <PackageReference Include="CardsView">
+      <Version>2.3.7</Version>
+    </PackageReference>
+    <PackageReference Include="FluentValidation">
+      <Version>8.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Forms.Controls.FlexButton">
+      <Version>0.11.0</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.6.292</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
+      <Version>17.4.0.46</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView">
+      <Version>1.3.6</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Plugin.Calendar">
+      <Version>1.0.3.200</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>4.3.0.991211</Version>
+    </PackageReference>
+    <PackageReference Include="IntelliAbb.Xamarin.Controls">
+      <Version>1.0.148</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.Visual.Material">
+      <Version>4.3.0.991211</Version>
+    </PackageReference>
+    <PackageReference Include="PCLExt.FileStorage">
+      <Version>1.4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>4.3.0.991211</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>4.0.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Plugin.FilePicker">
+      <Version>2.1.34</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Geolocator">
+      <Version>4.5.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="GMImagePicker.Xamarin">
+      <Version>2.3.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView">
+      <Version>2.0.10</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="drawable-hdpi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="drawable-xhdpi\ic_edit.png" />
+    <BundleResource Include="drawable-xxhdpi\ic_edit.png" />
+    <BundleResource Include="drawable-xxxhdpi\ic_edit.png" />
+    <BundleResource Include="drawable-mdpi\ic_error_outline.png" />
+    <BundleResource Include="drawable-xhdpi\ic_error_outline.png" />
+    <BundleResource Include="drawable-xxhdpi\ic_error_outline.png" />
+    <BundleResource Include="drawable-xxxhdpi\ic_error_outline.png" />
+    <BundleResource Include="drawable-mdpi\ic_person_add.png" />
+    <BundleResource Include="drawable-xhdpi\ic_person_add.png" />
+    <BundleResource Include="drawable-xxhdpi\ic_person_add.png" />
+    <BundleResource Include="drawable-xxxhdpi\ic_person_add.png" />
+    <BundleResource Include="drawable-mdpi\ic_check.png" />
+    <BundleResource Include="drawable-xhdpi\ic_check.png" />
+    <BundleResource Include="drawable-xxhdpi\ic_check.png" />
+    <BundleResource Include="drawable-xxxhdpi\ic_check.png" />
+    <BundleResource Include="drawable-mdpi\ic_business_center.png" />
+    <BundleResource Include="drawable-xhdpi\ic_business_center.png" />
+    <BundleResource Include="drawable-xxhdpi\ic_business_center.png" />
+    <BundleResource Include="drawable-xxxhdpi\ic_business_center.png" />
+    <BundleResource Include="drawable-mdpi\ic_add.png" />
+    <BundleResource Include="drawable-xhdpi\ic_add.png" />
+    <BundleResource Include="drawable-xxhdpi\ic_add.png" />
+    <BundleResource Include="drawable-xxxhdpi\ic_add.png" />
+    <BundleResource Include="drawable-mdpi\ic_control_point.png" />
+    <BundleResource Include="drawable-xhdpi\ic_control_point.png" />
+    <BundleResource Include="drawable-xxhdpi\ic_control_point.png" />
+    <BundleResource Include="drawable-xxxhdpi\ic_control_point.png" />
+    <BundleResource Include="ic_business_center.png" />
+    <BundleResource Include="ic_add.png" />
+    <BundleResource Include="ic_check.png" />
+    <BundleResource Include="ic_control_point.png" />
+    <BundleResource Include="ic_edit.png" />
+    <BundleResource Include="ic_error_outline.png" />
+    <BundleResource Include="ic_person_add.png" />
+    <BundleResource Include="ic_add_circle.png" />
+    <BundleResource Include="calendar.png" />
+    <BundleResource Include="completed_task.png" />
+    <BundleResource Include="drive.png" />
+    <BundleResource Include="family.png" />
+    <BundleResource Include="folder.png" />
+    <BundleResource Include="house.png" />
+    <BundleResource Include="log_out.png" />
+    <BundleResource Include="office_material.png" />
+    <BundleResource Include="settings.png" />
+    <BundleResource Include="user.png" />
+    <BundleResource Include="ic_addicon.png" />
+    <BundleResource Include="ic_vicon.png" />
+    <BundleResource Include="ic_action_edit.png" />
+    <BundleResource Include="delete.png" />
+    <BundleResource Include="ic_remove_circle_outline.png" />
+    <BundleResource Include="ic_lock_open.png" />
+    <BundleResource Include="ic_lock.png" />
+    <BundleResource Include="pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SaveAll\SaveAll.csproj">
+      <Project>{9a3a537d-f046-40c9-b28e-6389d8b794d9}</Project>
+      <Name>SaveAll</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

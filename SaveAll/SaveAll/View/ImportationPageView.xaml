@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:SaveAll.Controls" xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex" NavigationPage.HasNavigationBar="False"
+             Style="{StaticResource ContentPageStyleIdentification}"
+             x:Class="SaveAll.View.ImportationPageView">
+    
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="CenterAndExpand"
+                         Margin="25,20"
+                         HorizontalOptions="FillAndExpand">
+
+
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="Center"
+                         Margin="0,0,0,15"
+                         HorizontalOptions="CenterAndExpand">
+
+
+               <Label Style="{ StaticResource TitleStyle }"
+                      Text="IMPORTATION">
+                       
+               </Label>
+
+            
+               
+
+             </StackLayout>
+
+
+               
+
+            <StackLayout Orientation="Vertical"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand"
+                         Spacing="30">
+
+
+                <StackLayout Orientation="Vertical"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="StartAndExpand">
+
+                <Label Style="{ StaticResource TextLabelStyle }"
+                    HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       Text="La fonctionnalité d’importation a pour but de vous aider a récupérer l’ensemble de vos informations synchronisées sur votre compte google drive ou sauvegardées sur un autre support."
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"></Label>
+
+
+                 </StackLayout>
+
+                <StackLayout Orientation="Vertical"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+
+                     <Label Style="{ StaticResource TextLabelStyle }"
+                      Text="Selectionner une source">
+                       
+               </Label>
+
+
+                    </StackLayout>
+             
+             </StackLayout>
+  
+          
+                <StackLayout Orientation="Vertical"
+                             HorizontalOptions="FillAndExpand"
+                             Spacing="15"
+                         VerticalOptions="CenterAndExpand">
+
+                <StackLayout Orientation="Vertical"
+                             VerticalOptions="Center"
+                              Margin="0,5,0,0"
+                             HorizontalOptions="FillAndExpand">
+
+                     <flex:FlexButton
+                        CornerRadius="4"
+                        Visual="Material"
+                        FontSize="17"
+                         ForegroundColor="White"
+                        BackgroundColor="#21FFFFFF"
+                        HasShadow="True"
+                        HeightRequest="44"
+                        FontAttributes="None"
+                        Icon="drive.png"
+                        HighlightBackgroundColor="#21FFFFFF"
+                        HighlightForegroundColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Google drive" />
+
+
+              
+                </StackLayout>
+        
+
+
+                
+               
+
+                 <StackLayout Orientation="Vertical"
+                              VerticalOptions="End"
+                              HorizontalOptions="FillAndExpand">
+
+
+
+
+
+                      <flex:FlexButton
+                        CornerRadius="4"
+                        Visual="Material"
+                        FontSize="17"
+                        ForegroundColor="White"
+                        BackgroundColor="#21FFFFFF"
+                        HasShadow="True"
+                        HeightRequest="44"
+                        FontAttributes="None"
+                        HighlightBackgroundColor="#21FFFFFF"
+                        HighlightForegroundColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Autres..." />
+
+
+              
+
+                
+                </StackLayout>
+
+          
+              </StackLayout>
+
+                  <StackLayout Orientation="Vertical"
+                              VerticalOptions="EndAndExpand"
+                               Margin="0,70,0,0"
+                              HorizontalOptions="StartAndExpand">
+
+                      <Frame CornerRadius="3"
+                                Padding="0"
+                                HasShadow="False"
+                                Style="{StaticResource FramestyleButton}">
+
+                <Label Style="{StaticResource TextLabelStyle}"
+                        Text="Retour"/>
+
+                        <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ConnexionClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+                </StackLayout>
+
+          </StackLayout>  
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

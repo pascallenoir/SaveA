@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:control="clr-namespace:SaveAll.Controls" 
+             xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex" 
+             x:Class="SaveAll.View.MiseAJourMotDePasseView"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.BackButtonTitle="Retour"
+             Title="Changer de mot de passe">
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Start"
+                                 Margin="30,20,30,0"
+                                 Spacing="0">
+
+             <StackLayout Orientation="Vertical">
+
+                
+                
+                                <control:EntryRendererProfil x:Name="PassActuel"
+                                                             IsPassword="True"
+                                                             Placeholder="Mot de passe actuel"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding PassActuel}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryPassStylePassword}"/>
+
+
+                                <control:EntryRendererProfil x:Name="NewPass"
+                                                            Placeholder="Nouveau mot de passe"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding Pass}"
+                                                             IsPassword="True"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryPassStylePassword}"/>
+
+
+
+                                <control:EntryRendererProfil x:Name="ConfirmNewPass"
+                                                             Placeholder="Confirmer mot de passe"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             IsPassword="True"
+                                                             Text="{Binding ConfirmPass}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryPassStylePassword}"/>
+
+
+
+                  </StackLayout>
+
+                 <StackLayout Orientation="Vertical">
+
+                           <Frame Padding="0"
+                                HasShadow="False"
+                                BackgroundColor="Transparent">
+
+                        <Label x:Name="LabelPassword" 
+                               TextColor="#0D0D0D" 
+                               HorizontalOptions="EndAndExpand" 
+                               Text="Afficher mot de passe" 
+                               FontSize="Micro"></Label>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AuClickSurChamps"/>
+                        </Frame.GestureRecognizers>
+                        </Frame>
+
+                      <flex:FlexButton
+                        CornerRadius="4"
+                        Visual="Material"
+                        FontSize="17"
+                        BackgroundColor="#2699FB"
+                        ForegroundColor="White"
+                        Margin="0,20,0,0"
+                        HasShadow="True"
+                        Padding="3"
+                        HeightRequest="44"
+                        FontAttributes="None"
+                        Text="Enregistrer"
+                        ClickedCommand="{Binding ValiderCommand}"/>
+
+
+
+                     </StackLayout>
+
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

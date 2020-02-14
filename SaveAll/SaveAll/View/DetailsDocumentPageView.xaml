@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaveAll.View.DetailsDocumentPageView"
+             xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex" 
+             Title="Details document">
+
+    <NavigationPage.TitleView>
+
+        <StackLayout Orientation="Horizontal"
+                     Margin="{OnPlatform iOS='0,0,5,0', Android='0,0,20,0', Default=0}"
+                     HorizontalOptions="FillAndExpand">
+
+            <StackLayout Orientation="Horizontal"
+                     Margin="{OnPlatform iOS='0,0,0,0', Android='0,0,0,0', Default=0}"
+                     HorizontalOptions="CenterAndExpand">
+
+                <Label Text="Details document"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   TextColor="White"
+                   VerticalOptions="Start"/>
+
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                     Margin="{OnPlatform iOS='0,0,0,0', Android='0,0,0,0', Default=0}"
+                     HorizontalOptions="End">
+
+
+                <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+
+                    <Label Text="Modifier"
+                       IsEnabled="False"
+                       FontSize="18"
+                       TextColor="White"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"/>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding MiseAjourPageCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"
+                     BackgroundColor="White"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
+
+
+         
+
+            <ScrollView Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never">
+
+            <StackLayout Orientation="Vertical"
+                     VerticalOptions="FillAndExpand"
+                       Margin="20,20,20,20"
+                         Spacing="20"
+                     HorizontalOptions="FillAndExpand">
+
+
+                <StackLayout Orientation="Vertical"
+                     VerticalOptions="Start"
+                             Spacing="5"
+                     HorizontalOptions="StartAndExpand">
+
+                <Label 
+                   Text="{Binding nomDocument}"
+                   Style="{StaticResource TitleStyleHistoriue}"
+                   VerticalTextAlignment="Center"/>
+
+                    <Label 
+                   Text="{Binding Code}"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Center"/>
+
+             </StackLayout>
+
+             <StackLayout Orientation="Vertical"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
+
+
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Type document :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                            <Label Text="{Binding NomTypeDocument}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Etabli le :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                 <Label Text="{Binding DateEts, StringFormat='{0:dd MMMM , yyyy}'}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Expire le :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                 <Label Text="{Binding DateExp, StringFormat='{0:dd MMMM , yyyy}'}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Delivré par :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                 <Label Text="{Binding Organisme}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Fichiers :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                       <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False">
+
+                 <Label Text="{Binding NomduFichier}"
+                        HorizontalOptions="FillAndExpand"
+                        TextColor="#2070CF"
+                        FontSize="Medium"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectLienCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                 </StackLayout>
+                 
+                 <Label Text="{Binding AccesFichier}"
+                       IsVisible="False"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center"/>
+
+
+
+                 
+                   <StackLayout Orientation="Vertical"
+                                Margin="0,20,0,0"
+                     HorizontalOptions="FillAndExpand">
+
+                <Label Text="Description"
+                       TextColor="Black"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                 <Label Text="{Binding DescriptionDocument}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+            </StackLayout>
+
+          
+        </StackLayout>
+
+       </ScrollView>
+
+
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand"
+                         BackgroundColor="#F1F1F1"
+                         HorizontalOptions="FillAndExpand">
+
+
+
+                <flex:FlexButton
+                        Visual="Material"
+                        FontSize="17"
+                        ForegroundColor="Red"
+                        BorderColor="#8E8B8B"
+                        BorderThickness="0,1,0,0"
+                        BackgroundColor="#F1F1F1"
+                        HasShadow="False"
+                        HeightRequest="44"
+                        FontAttributes="None"
+                        ClickedCommand="{Binding DeleteCommand}"
+                        HighlightBackgroundColor="#F1F1F1"
+                        HighlightForegroundColor="Red"
+                        VerticalOptions="End"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Supprimer Document"/>
+
+            </StackLayout>
+
+          
+        </StackLayout>
+
+    </ContentPage.Content>
+
+
+</ContentPage>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customControls="clr-namespace:SaveAll.Controls"
+             xmlns:controls="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
+             xmlns:local="clr-namespace:SaveAll.View"
+             Style="{StaticResource ContentPageStylecontenu}"
+             Title="Documents"
+             x:Class="SaveAll.View.HistoriqueDocument">
+
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" /> 
+            </Grid.RowDefinitions>
+            
+
+
+    <StackLayout Grid.Row="0"
+                 Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand">
+
+        <StackLayout Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand"
+                     Margin="10,10,10,0"
+                 VerticalOptions="Start">
+
+            <StackLayout Orientation="Horizontal"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="Start">
+
+                    <Label Text="Historique document"
+                           HeightRequest="30"
+                           Style="{StaticResource TitleStyleHistoriue}"
+                            HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Start"/>
+
+                    <ImageButton Aspect="AspectFit"
+                                 HeightRequest="35"
+                                 BackgroundColor="White"
+                                 WidthRequest="30"
+                                 Source="delete.png"
+                                 HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="Start"
+                                 Command="{Binding DeleteAllCommand}"
+                                 />
+
+            </StackLayout>
+
+                <SearchBar x:Name="searchBar"
+                           SearchCommand="{Binding SearchCommand}"
+                           Text="{Binding SearchText}"
+                       HorizontalOptions="FillAndExpand"
+                       Placeholder="Rechercher un document..."/>
+
+        </StackLayout>
+
+         
+             
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Margin="0,5,0,0">
+            
+                    <ListView x:Name="listdoc"
+                            ItemsSource="{Binding DocumentList}"
+                            VerticalOptions="FillAndExpand"
+                            SeparatorVisibility="None"
+                            BackgroundColor="#F1F1F1"
+                            RowHeight="100"
+                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                            VerticalScrollBarVisibility="Never">
+
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <customControls:ExtendedViewCell SelectedBackgroundColor="#66ffffff">
+
+                        <local:CardsViewTemplateForDocumentHisto/>
+
+                     </customControls:ExtendedViewCell>
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+         </ListView>
+        </StackLayout>
+
+
+   </StackLayout>
+
+
+
+    <controls:FloatingActionButton Grid.Row="0"
+                                   Visual="Material"
+                                   ButtonColor="#0B9F0F"
+                                   Margin="0,0,5,5"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="End"
+                                   Command="{Binding AjouterCommand}"
+                                   Image="ic_addicon.png"/>
+
+        </Grid>
+</ContentPage>
+
+
+    

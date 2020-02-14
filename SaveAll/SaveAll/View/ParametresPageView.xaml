@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaveAll.View.ParametresPageView"
+             xmlns:sv="clr-namespace:AiForms.Renderers;assembly=SettingsView"
+             Title="Parametres">
+
+    <ContentPage.Content>
+     
+
+        <sv:SettingsView HasUnevenRows="True"
+                         Margin="0,0,0,0"
+                         SeparatorColor="#bababa" >
+
+            <sv:Section Title="Paramètres généraux"
+                        TextColor="#bababa">
+
+                <sv:CommandCell Title="Notifications"
+                                Height="40"
+                                TitleFontSize="17"
+                                Command="{Binding ActiviteNotificationsCommand}" 
+                                KeepSelectedUntilBack="true"/>
+
+
+                <sv:CommandCell Title="Sauvegarde" 
+                               Command="{Binding ActiviteSauvegardeCommand}" 
+                               KeepSelectedUntilBack="true"
+                               Description="Sauvegarder votre historique et vos fichiers medias sur iCloud ou Drive; si vous changez ou perdez votre téléphone, vos informations seront sécurisées. ." 
+                               DescriptionColor="#bababa"
+                               DescriptionFontSize="12"/>
+
+                <sv:PickerCell Title="Langue" 
+                               ItemsSource="{Binding ItemsSource}" 
+                               DisplayMember="Name"
+                               Height="40"
+                               TitleFontSize="17"
+                               MaxSelectedNumber="1" 
+                               SelectedItems="{Binding SelectedItem}" 
+                               KeepSelectedUntilBack="true" 
+                               PageTitle="Choisir une Langue" />
+
+            </sv:Section>
+
+            <sv:Section>
+
+                <sv:CommandCell Title="Ajouter ou modifier des informations"
+                                Description="type de document, type de bien etc..."
+                                DescriptionColor="#bababa"
+                                DescriptionFontSize="12"
+                                Command="{Binding ActiviteTypeCommand}" 
+                                KeepSelectedUntilBack="true"/>
+
+                <sv:LabelCell Title="Version"
+                              ValueTextColor="#bababa"
+                              ValueTextFontSize="17"
+                              Height="40"
+                              TitleFontSize="17"
+                              ValueText="Value" />
+
+                <sv:CommandCell Title="A Propos" 
+                                Height="40"
+                                TitleFontSize="17"
+                                Command="{Binding ActiviteAproposCommand}" 
+                                KeepSelectedUntilBack="true"/>
+
+
+            </sv:Section>
+
+        </sv:SettingsView>
+    </ContentPage.Content>
+
+</ContentPage>

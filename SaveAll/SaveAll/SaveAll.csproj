@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AiForms.SettingsView" Version="1.0.9" />
+    <PackageReference Include="CardsView" Version="2.3.7" />
+    <PackageReference Include="FluentValidation" Version="8.5.1" />
+    <PackageReference Include="Forms.Controls.FlexButton" Version="0.11.0" />
+    <PackageReference Include="PCLExt.FileStorage" Version="1.4.1.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.4.0.46" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.6" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.0.3.200" />
+    <PackageReference Include="SuaveControls.FloatingActionButton" Version="2018.1.5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
+    <PackageReference Include="IntelliAbb.Xamarin.Controls" Version="1.0.148" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.3.0.991211" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.3.0.991211" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.34" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.10" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Rg.Plugins.Popup-master\src\Rg.Plugins.Popup\Rg.Plugins.Popup.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Behaviors\BehaviorBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FodyWeavers.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="View\AjoutTypeDocumentPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\AjoutTypeEvenementPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\AjoutTypeMembrePageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\AjoutTypePatrimoinePageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\CalendarPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ListTypeDocumentPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ListTypeEvenementPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ListTypeMembrePageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ListTypePatrimoinePageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\NotificationsPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ParametresSauvegardePageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ParametresTypesPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

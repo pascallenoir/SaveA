@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:SaveAll.Controls"
+    BackgroundInputTransparent="False"
+    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex" 
+    HasKeyboardOffset="False"
+    IsAnimating="True"
+    x:Class="SaveAll.View.MiseAJourMembrePageView">
+
+  <popup:PopupPage.Animation>  
+        <animations:MoveAnimation   
+                      PositionIn="Bottom"  
+                      PositionOut="Bottom"
+                      DurationIn="300"
+                      DurationOut="300"
+                      HasBackgroundAnimation="True"/>  
+    </popup:PopupPage.Animation>
+
+        <yummy:PancakeView 
+                    CornerRadius="14,14,0,0"
+                    Elevation="10"
+                    BackgroundColor="#F1F1F1"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+
+            
+
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="20">
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="White"
+                         HeightRequest="40"
+                         Padding="10,5,10,5"
+                         VerticalOptions="Start"
+                         Spacing="10">
+
+                     <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+                        
+                <Label Text="Annuler"
+                       TextColor="Red"
+                       FontSize="18"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"/>
+
+
+                          <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AnnulerCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                <Label Text="Mise a jour membre"
+                       TextColor="#0D0D0D"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center"/>
+
+
+                
+                    <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+
+                <Label Text="Modifier"
+                       IsEnabled="False"
+                       TextColor="Red"
+                       FontSize="18"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"/>
+
+                    <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EnregistrementCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+            </StackLayout>
+
+
+
+
+            <ScrollView Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never">
+
+                <StackLayout Orientation="Vertical"
+                       VerticalOptions="EndAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Spacing="20">
+
+                    <StackLayout Orientation="Vertical"
+                         Spacing="1">
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+                                <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   Text="{Binding Nom}"
+                                   TextColor="#0D0D0D"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Nom"/>
+
+
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+                                <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   Text="{Binding Prenom}"
+                                   TextColor="#0D0D0D"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Prenom"/>
+
+                            </StackLayout>
+
+                        </Frame>
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical"
+                          Spacing="1">
+
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+                                <StackLayout Orientation="Horizontal"
+                                  HorizontalOptions="StartAndExpand">
+
+
+                                    <Label Text="Date de Naissance"
+                       TextColor="#0D0D0D"
+                       Padding="5,0,0,0"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                  Padding="0,0,8,0"
+                                  HorizontalOptions="EndAndExpand">
+
+
+                                    <custom:EntryRendererDatePicker
+                                   HorizontalOptions="EndAndExpand"
+                                   Margin="0,0,0,0"
+                                   Date="{Binding DateNaiss}"
+                                   FontSize="16"
+                                   TextColor="#0D0D0D"/>
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+                                <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   Text="{Binding LieuNaiss}"
+                                   TextColor="#0D0D0D"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Lieu de naissance"/>
+
+                            </StackLayout>
+
+                        </Frame>
+
+                    </StackLayout>
+
+                    <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                        <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+
+                            <custom:EntryRendererPickerMenu 
+                            Title="Sexe"
+                            TitleColor="#E2E2E2"
+                            WidthRequest="190"
+                            SelectedItem="{Binding Sexe}"
+                            HorizontalOptions="StartAndExpand"
+                            FontSize="16">
+
+                                <custom:EntryRendererPickerMenu.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>M</x:String>
+                                        <x:String>F</x:String>
+                                    </x:Array>
+                                </custom:EntryRendererPickerMenu.ItemsSource>
+                            </custom:EntryRendererPickerMenu>
+
+
+                            <custom:EntryRendererPickerMenu 
+                            Title="Groupe sanguin"
+                            TitleColor="#E2E2E2"
+                            WidthRequest="190"
+                            SelectedItem="{Binding GroupeSanguin}"
+                            HorizontalOptions="EndAndExpand"
+                            FontSize="16">
+
+                                <custom:EntryRendererPickerMenu.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>AB+</x:String>
+                                        <x:String>O+</x:String>
+                                        <x:String>A+</x:String>
+                                        <x:String>B+</x:String>
+                                        <x:String>AB-</x:String>
+                                        <x:String>O-</x:String>
+                                        <x:String>B-</x:String>
+                                        <x:String>A-</x:String>
+                                    </x:Array>
+                                </custom:EntryRendererPickerMenu.ItemsSource>
+                            </custom:EntryRendererPickerMenu>
+
+
+                        </StackLayout>
+
+                    </Frame>
+
+
+                    <StackLayout Orientation="Vertical"
+                     Spacing="1">
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+
+                                <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding Adresse}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Adresse"/>
+
+                            </StackLayout>
+
+                        </Frame>
+
+
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+                                <custom:EntryRendererMenu Keyboard="Telephone"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   Text="{Binding Telephone}"
+                                   TextColor="#0D0D0D"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Telephone"/>
+
+                            </StackLayout>
+
+                        </Frame>
+
+
+
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+                                
+                                <custom:EntryRendererPickerMenu
+                                   Title="Lien de parenté"
+                                   ItemsSource="{Binding TypeMembreList}"
+                                   ItemDisplayBinding="{Binding NomTypeMembre}"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   TitleColor="#E2E2E2"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   SelectedItem="{Binding Lien}"
+                                   Style="{StaticResource EntryStylemenu}"/>
+
+
+                            </StackLayout>
+
+                        </Frame>
+
+
+                    </StackLayout>
+
+
+
+                </StackLayout>
+
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand"
+                         BackgroundColor="#F1F1F1"
+                         HorizontalOptions="FillAndExpand">
+
+
+
+                <flex:FlexButton
+                        Visual="Material"
+                        FontSize="17"
+                        ForegroundColor="Red"
+                        BorderColor="#8E8B8B"
+                        BorderThickness="0,1,0,0"
+                        BackgroundColor="#F1F1F1"
+                        HasShadow="False"
+                        HeightRequest="44"
+                        FontAttributes="None"
+                        ClickedCommand="{Binding DeleteCommand}"
+                        HighlightForegroundColor="#E2E2E2"
+                        HighlightBackgroundColor="#F1F1F1"
+                        HighlightBorderColor="#8E8B8B"
+                        VerticalOptions="End"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Supprimer le membre"/>
+
+            </StackLayout>
+
+        </StackLayout>
+
+       </yummy:PancakeView>
+</popup:PopupPage>
