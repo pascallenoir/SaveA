@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?PowerDesigner signature="Workspace" version="15.1.0.2850"?>
+<!-- Veuillez ne pas modifier ce fichier -->
+
+<Workspace>
+	<Local Expanded="Yes">
+		<Model Expanded="Yes" ID="{6462FA34-4E3B-45E0-B453-332627D79295}" Name="Savall" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Savall/Savall.prj"/>
+	</Local>
+	<BrowserModule Name="Référentiel"/>
+</Workspace>
