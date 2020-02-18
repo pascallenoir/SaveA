@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" x:Class="SaveAll.View.CardsViewTemplatePatrimoineHisto">
+
+    <ContentView.Content>
+
+ <StackLayout Padding="5,2">
+
+        <pancake:PancakeView
+            BackgroundColor="White"
+            CornerRadius="4"
+            HeightRequest="90"
+            Elevation="4"
+            HasShadow="True"
+            HorizontalOptions="FillAndExpand">
+
+                    <Grid Padding="5,0">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="80" />
+                      </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0"
+                                       Grid.Column="0"
+                                       Margin="0,0,2,0"
+                                       Source="office_material.png"
+                                       HeightRequest="40"
+                                       WidthRequest="40"
+                                       VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       Aspect="AspectFit"/>
+
+                        
+                                <StackLayout Grid.Row="0"
+                                             Grid.Column="1"
+                                             Orientation="Vertical"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="FillAndExpand">
+
+                                            <Label Text="{Binding NomDuBien}"
+                                                   MaxLines="1"
+                                                   LineBreakMode="TailTruncation"
+                                                   Style="{StaticResource LabelTitreStackLayoutHistorique}"/>
+
+                                            <Label Text="{Binding DescriptionPatrimoine}"
+                                                   MaxLines="2"
+                                                   LineBreakMode="TailTruncation"
+                                                   Style="{StaticResource LabelDescriptionStackLayoutHistorique}"/>
+
+                                </StackLayout>
+
+                                 <Label Grid.Row="0"
+                                        Grid.Column="2"
+                                        Margin="0,20,0,0"
+                                        MaxLines="1"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding DateEnr, StringFormat='{0:dd MMMM , yyyy}'}"
+                                        Style="{StaticResource LabelDescriptionStackLayoutHistorique}"/>
+
+
+
+                    </Grid>
+        </pancake:PancakeView>
+
+
+    </StackLayout>
+
+    </ContentView.Content>
+</ContentView>

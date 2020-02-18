@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:SaveAll.Controls"
+    BackgroundInputTransparent="False"
+    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex" 
+    IsAnimating="True"
+    HasKeyboardOffset="False"
+    x:Class="SaveAll.View.MiseAjourDocumentPageView">
+
+
+    <popup:PopupPage.Animation>  
+         <animations:MoveAnimation   
+                      PositionIn="Bottom"  
+                      PositionOut="Bottom"
+                      DurationIn="300"
+                      DurationOut="300"
+                      EasingIn="BounceOut"
+                      HasBackgroundAnimation="True"/>  
+    </popup:PopupPage.Animation>
+
+ 
+        <yummy:PancakeView 
+                    CornerRadius="14,14,0,0"
+                    Elevation="10"
+                    BackgroundColor="#F1F1F1"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+
+            
+
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="20">
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="White"
+                         HeightRequest="40"
+                         Padding="10,5,10,5"
+                         VerticalOptions="Start"
+                         Spacing="10">
+
+                    <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+                        
+                <Label Text="Annuler"
+                       TextColor="Red"
+                       FontSize="18"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"/>
+
+
+                          <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AnnulerCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                <Label Text="Modifier document"
+                       TextColor="#0D0D0D"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center"/>
+
+
+                
+                <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+
+                <Label Text="Enregistrer"
+                       IsEnabled="False"
+                       TextColor="Red"
+                       FontSize="18"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"/>
+
+                    <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ModificationCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+
+            </StackLayout>
+
+
+            <ScrollView Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never">
+
+                <StackLayout Orientation="Vertical"
+                       VerticalOptions="EndAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Spacing="20">
+
+
+
+                    <StackLayout Orientation="Vertical"
+                       VerticalOptions="EndAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Spacing="1">
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+                                <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding nomDocument}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Nom du document"/>
+
+
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+                                <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding Code}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Numero du document"/>
+
+
+                            </StackLayout>
+
+                        </Frame>
+
+                    </StackLayout>
+
+
+
+                    <StackLayout Orientation="Vertical"
+                          Spacing="1">
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40">
+
+                                <StackLayout Orientation="Horizontal"
+                            HorizontalOptions="StartAndExpand">
+
+
+                                    <Label Text="Type document"
+                       TextColor="#0D0D0D"
+                       Padding="5,0,0,0"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                  Padding="0,0,8,0"
+                                  HorizontalOptions="EndAndExpand">
+
+
+                           <custom:EntryRendererPickerMenu
+                            ItemsSource="{Binding TypedocumentList}"
+                            ItemDisplayBinding="{Binding NomTypeDocument}"
+                            x:Name="PickerDocument" 
+                            Title="Choisir"
+                            SelectedItem="{Binding TypeDocument, Mode=TwoWay}"
+                            TitleColor="#E2E2E2"
+                            HorizontalOptions="EndAndExpand"
+                            FontSize="16"/>
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False" 
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40">
+
+                                <StackLayout Orientation="Horizontal"
+                                  HorizontalOptions="StartAndExpand">
+
+
+                                    <Label Text="Etabli le"
+                       TextColor="#0D0D0D"
+                       Padding="5,0,0,0"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                  Padding="0,0,8,0"
+                                  HorizontalOptions="EndAndExpand">
+
+
+                                    <custom:EntryRendererDatePicker
+                                   HorizontalOptions="FillAndExpand"
+                                   Date="{Binding DateEts}"
+                                   Margin="0,0,0,0"
+                                   FontSize="16"
+                                   TextColor="#0D0D0D"/>
+
+                                </StackLayout>
+
+
+                            </StackLayout>
+
+                        </Frame>
+
+
+                        <Frame Padding="0"
+                        HasShadow="False"
+                        CornerRadius="0"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40">
+
+                                <Label Text="Ce document est il renouvelable"
+                       TextColor="#0D0D0D"
+                       Padding="5,0,0,0"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                                <Switch VerticalOptions="Center"
+                              Margin="0,0,5,0"
+                              IsToggled="{Binding Periodicite, Mode=TwoWay}"
+                              Toggled="ActivationDuChamps"
+                              HorizontalOptions="EndAndExpand">
+
+                                </Switch>
+
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame Padding="0"
+                        HasShadow="False"
+                        CornerRadius="0"
+                        BorderColor="#E0DCDC">
+
+
+                        <StackLayout x:Name="DateExpiration"
+                         IsEnabled="False"
+                         Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40">
+
+                                <StackLayout Orientation="Horizontal"
+                                  HorizontalOptions="StartAndExpand">
+
+
+                       <Label x:Name="ExpirationLabel"
+                       Text="Expire le"
+                       TextColor="#bababa"
+                       Padding="5,0,0,0"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                  Padding="0,0,8,0"
+                                  HorizontalOptions="EndAndExpand">
+
+
+                                    <custom:EntryRendererDatePicker x:Name="ExpirationDate"
+                                   HorizontalOptions="EndAndExpand"
+                                   Date="{Binding DateExp}"
+                                   Margin="0,0,0,0"
+                                   FontSize="16"
+                                   TextColor="#0D0D0D"/>
+
+                                </StackLayout>
+
+
+                            </StackLayout>
+
+                        </Frame>
+
+
+                        <Frame Padding="0"
+                        HasShadow="False"
+                        CornerRadius="0"
+                        BorderColor="#E0DCDC">
+
+
+                            <StackLayout x:Name="DateExpiration2"
+                         IsEnabled="False"
+                         Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40">
+
+                                <StackLayout Orientation="Horizontal"
+                                  HorizontalOptions="StartAndExpand">
+
+
+                                    <Label x:Name="ExpirationLabelheure"
+                       Text="Expire a"
+                       TextColor="#bababa"
+                       Padding="5,0,0,0"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                  Padding="0,0,8,0"
+                                  HorizontalOptions="EndAndExpand">
+
+
+                                  <custom:EntryRendererTimePicker x:Name="HeureExpiration"
+                                   Time="{Binding HeureExp}"
+                                   Format="t"
+                                   Margin="0,0,0,0"
+                                   FontSize="16"
+                                   HorizontalOptions="EndAndExpand"
+                                   TextColor="#bababa"/>
+
+                                </StackLayout>
+
+
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+                                <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding Organisme}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Delivré par"/>
+
+
+
+
+
+                            </StackLayout>
+
+                        </Frame>
+
+                    </StackLayout>
+
+                    <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                        <StackLayout Orientation="Vertical">
+
+                            <custom:EntryRendererMenuEditor Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   MaxLength="500"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding DescriptionDocument}"
+                                   HeightRequest="100"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Notes..."/>
+
+
+                        </StackLayout>
+
+                    </Frame>
+
+
+
+                    <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                        <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+
+
+
+                            <custom:EntryRendererMenu x:Name="FileNameLabel"
+                                    Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding NomduFichier}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Joindre un document"/>
+
+                            <Label Text="{Binding AccesFichier}"
+                       IsVisible="False"
+                       TextColor="#0D0D0D"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center"/>
+
+
+
+
+                            <ImageButton Source="folder.png"
+                             HeightRequest="30"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             Margin="5,0,5,0"
+                             Aspect="AspectFit"
+                             Command="{Binding JoindreDocumentCommand}"
+                             HorizontalOptions="End">
+
+                           <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+            <VisualState x:Name="Normal">
+                <VisualState.Setters>
+                    <Setter Property="Opacity"
+                            Value="1" />
+                </VisualState.Setters>
+            </VisualState>
+
+            <VisualState x:Name="Pressed">
+                <VisualState.Setters>
+                    <Setter Property="Opacity"
+                            Value="0.5" />
+                </VisualState.Setters>
+            </VisualState> 
+
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+</ImageButton>
+
+
+                    
+
+
+            </StackLayout>
+
+            </Frame>
+
+
+
+          </StackLayout> 
+
+         </ScrollView>
+
+          
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand"
+                         BackgroundColor="#F1F1F1"
+                         HorizontalOptions="FillAndExpand">
+
+
+
+                <flex:FlexButton
+                        Visual="Material"
+                        FontSize="17"
+                        ForegroundColor="Red"
+                        BorderColor="#8E8B8B"
+                        BorderThickness="0,1,0,0"
+                        BackgroundColor="#F1F1F1"
+                        HasShadow="False"
+                        HeightRequest="44"
+                        FontAttributes="None"
+                        ClickedCommand="{Binding DeleteDocumentCommand}"
+                        HighlightForegroundColor="#E2E2E2"
+                        HighlightBorderColor="#8E8B8B"
+                        VerticalOptions="End"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Supprimer le Document"/>
+
+            </StackLayout>
+
+        </StackLayout>
+
+       </yummy:PancakeView>
+</popup:PopupPage>

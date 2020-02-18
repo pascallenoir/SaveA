@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:custom="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:control="clr-namespace:SaveAll.Controls"
+             xmlns:Behaviors="clr-namespace:SaveAll.Behaviors"
+             xmlns:controls="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
+             xmlns:converters="clr-namespace:SaveAll.Converters"
+             xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+             mc:Ignorable="d"
+             Title="Profil utilisateur"
+             Style="{StaticResource ContentPageStylecontenu}"
+             x:Class="SaveAll.View.ProfilPageView">
+
+    <ContentPage.ToolbarItems>
+        
+        <ToolbarItem x:Name="toolbar"
+            IconImageSource="ic_lock.png"
+                     Priority = "0" 
+                     Order = "Primary"
+                     Clicked="EditionTool"/>
+
+    </ContentPage.ToolbarItems>
+    
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteToImageFieldConverter x:Key="byteToImageSource" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+   
+          <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" /> 
+            </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0"
+                     x:Name="ProfilFiche"
+                     Orientation="Vertical"
+                     IsEnabled="False"
+                     BackgroundColor="LightGray"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Margin="0,0,0,0">
+            
+
+            <ScrollView Orientation="Vertical">
+
+                <StackLayout Orientation="Vertical"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Padding="0,0,0,20">
+
+                    <StackLayout BackgroundColor="#2699FB"
+                                 Orientation="Vertical"
+                                 HorizontalOptions="FillAndExpand"
+                                 HeightRequest="180"
+                                 VerticalOptions="Start">
+
+
+                          <Frame Padding="0"
+                         Margin="0,10,0,0"
+                         HorizontalOptions="CenterAndExpand"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+                        <custom:CircleImage x:Name="imageProfil"
+                                            BorderColor="White"
+                                            BorderThickness="2"
+                                            Aspect="AspectFill"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HeightRequest="120"
+                                            WidthRequest="120"
+                                            Source="{Binding Photo, Converter={StaticResource byteToImageSource}}"/>
+
+                    <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectImageCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+
+                        
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand"
+                                     Margin="20,0,0,10">
+
+                            <Label 
+                               TextColor="White"
+                               HorizontalTextAlignment="Start"
+                               Text="{Binding Nom}"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+
+                        <Label 
+                               TextColor="White"
+                               HorizontalTextAlignment="Start"
+                               Text="{Binding Prenom}"
+                               FontSize="18"/>
+
+                        
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Vertical"                           
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Start"
+                                 Margin="25,10,25,0">
+
+                            
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand">
+
+                                <Frame Padding="6,0,6,0"
+                                CornerRadius="5"
+                                BackgroundColor="#0D0D0D"
+                                HasShadow="False">
+
+                   
+                                <Label Text="Utilisateur"
+                                   TextColor="White"
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="18"
+                                   FontAttributes="Bold"/>
+                                    
+                                </Frame>
+
+
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical">
+
+                                <control:EntryRendererProfil Placeholder="Nom d'utilisateur"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             HeightRequest="40"
+                                                             Text="{Binding Login}"
+                                                             Style="{StaticResource EntryStyleProfil}"/>
+
+
+                                 <Frame Padding="0"
+                                BackgroundColor="Transparent"
+                                 HasShadow="False">
+
+                                <Label Text="Changer le mot de passe"
+                                   TextColor="#2699FB"
+                                   HorizontalOptions="CenterAndExpand"
+                                   FontSize="15"
+                                   FontAttributes="None"/>
+
+
+                                      <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AllerAmiseAjourPassword}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+
+                            </StackLayout>
+
+
+                        </StackLayout>
+
+
+                        <StackLayout Orientation="Vertical"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Start"
+                                 Margin="25,10,25,0">
+
+                            
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand">
+
+
+
+                                <Frame Padding="6,0,6,0"
+                                CornerRadius="5"
+                                HorizontalOptions="StartAndExpand"
+                                BackgroundColor="#0D0D0D"
+                                HasShadow="False">
+
+
+                                    <Label Text="Etat civil"
+                                   TextColor="White"
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="18"
+                                   FontAttributes="Bold"/>
+
+                                </Frame>
+
+                               
+
+                            <ImageButton x:Name="ImageButtonEtatcivil"
+                                        Aspect="AspectFit"
+                                         BackgroundColor="Transparent"
+                                         Source="ic_remove_circle_outline.png"
+                                         HeightRequest="20"
+                                         WidthRequest="20"
+                                         HorizontalOptions="End"
+                                         Clicked="AfficheInfoUtilisateur">
+
+                                               <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                                Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                    
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                                Value="0.5" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                    
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </ImageButton>
+
+
+                            </StackLayout>
+
+                            <StackLayout x:Name="Etatcivil"
+                                         Orientation="Vertical"
+                                         IsVisible="True">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <control:EntryRendererProfil Placeholder="Nom"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding Nom}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryStyleProfil}"/>
+
+                                <control:EntryRendererProfil Placeholder="Prenom"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding Prenom}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryStyleProfil}"/>
+
+
+                            </StackLayout>
+
+                             <StackLayout Orientation="Horizontal">
+
+
+                                  <StackLayout Orientation="Horizontal"
+                                               HorizontalOptions="FillAndExpand"
+                                               WidthRequest="150"
+                                               Spacing="0">
+
+                                    <Label Text="Date nais:"
+                                           TextColor="#0D0D0D"
+                                           FontSize="14"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="FillAndExpand"
+                                           Margin="0,0,0,0"/>
+
+                                    <control:EntryRendererDatePickerProfil 
+                                                             HorizontalOptions="FillAndExpand"
+                                                             HeightRequest="40"
+                                                             Date="{Binding DateNaiss, StringFormat='{0:dd MMMM , yyyy}'}"
+                                                             Style="{StaticResource EntryStyleProfil}"/>
+
+                                </StackLayout>
+
+
+                                  <StackLayout Orientation="Horizontal"
+                                               WidthRequest="150"
+                                               HorizontalOptions="FillAndExpand"
+                                               Spacing="0">
+                               
+
+                                <control:EntryRendererProfil Placeholder="Lieu naissance"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding LieuNaiss}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryStyleProfil}"/>
+
+ 
+                                </StackLayout>
+
+                            </StackLayout>
+
+                             <StackLayout Orientation="Horizontal">
+
+
+                                  <StackLayout Orientation="Horizontal"
+                                               HorizontalOptions="FillAndExpand"
+                                               WidthRequest="150"
+                                               Spacing="0">
+
+
+                                    <control:EntryRendererPickerProfil Title="Sexe"
+                                                            HorizontalOptions="FillAndExpand"
+                                                             HeightRequest="40"
+                                                             SelectedItem="{Binding Sexe}"
+                                                             Style="{StaticResource PickerStyleProfil}">
+
+                                         <control:EntryRendererPickerProfil.ItemsSource>  
+                    <x:Array Type="{x:Type x:String}">  
+                        <x:String>M</x:String>  
+                        <x:String>F</x:String>  
+                    </x:Array>  
+                </control:EntryRendererPickerProfil.ItemsSource>  
+            </control:EntryRendererPickerProfil>
+
+                                </StackLayout>
+
+
+                                  <StackLayout Orientation="Horizontal"
+                                               WidthRequest="150"
+                                               HorizontalOptions="FillAndExpand"
+                                               Spacing="0">
+                               
+
+                                <control:EntryRendererPickerProfil  Title="Groupe sanguin"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             HeightRequest="40"
+                                                             SelectedItem="{Binding GroupeSanguin}"
+                                                             Style="{StaticResource PickerStyleProfil}">
+                                                   <control:EntryRendererPickerProfil.ItemsSource>  
+                    <x:Array Type="{x:Type x:String}">  
+                        <x:String>AB+</x:String>
+                         <x:String>O+</x:String>
+                         <x:String>A+</x:String>  
+                        <x:String>B+</x:String>
+                         <x:String>AB-</x:String>  
+                        <x:String>O-</x:String>
+                         <x:String>B-</x:String>  
+                        <x:String>A-</x:String>  
+                    </x:Array>  
+                </control:EntryRendererPickerProfil.ItemsSource>  
+            </control:EntryRendererPickerProfil>
+
+ 
+                                </StackLayout>
+
+                            </StackLayout>
+
+                             <StackLayout Orientation="Vertical">
+
+                                    <control:EntryRendererProfil Placeholder="Adresse"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding Adresse}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryStyleProfil }"/>
+
+                                    <control:EntryRendererProfil x:Name="AdresseSecondaire"
+                                                             Placeholder="Adresse 2"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             IsVisible="False"
+                                                             Text="{Binding Adresse2}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryStyleProfil }"/>
+
+                        <flex:FlexButton x:Name="AjoutButtonAddress"
+                        Visual="Material"
+                        FontSize="15"
+                        BackgroundColor="Transparent"
+                        ForegroundColor="#0D0D0D"
+                        HorizontalOptions="FillAndExpand"
+                        HasShadow="False"
+                        Padding="3"
+                        IconTintEnabled="False"
+                        HeightRequest="40"
+                        Icon="ic_add_circle.png"
+                        IconOrientation="Left"
+                        FontAttributes="None"
+                        HighlightForegroundColor="#E2E2E2"
+                        Text="Ajouter une addresse"
+                        Clicked="FlexButton_Address"/>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Vertical">
+
+                                    <control:EntryRendererProfil  Placeholder="Telephone"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Telephone"
+                                                             HeightRequest="40"
+                                                             MaxLength="16"
+                                                             Text="{Binding Telephone}"
+                                                             Style="{StaticResource EntryStyleProfil}">
+
+                                        <control:EntryRendererProfil.Behaviors>
+                                            <Behaviors:MaskedBehavior Mask="(+XXX) XXXXXXXX" />
+                                        </control:EntryRendererProfil.Behaviors>
+                                    </control:EntryRendererProfil>
+
+                                        <control:EntryRendererProfil  x:Name="SecondNumeroTelephone"
+                                                             Placeholder="Telephone 2"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Telephone"
+                                                             IsVisible="False"
+                                                             HeightRequest="40"
+                                                             MaxLength="16"
+                                                             Text="{Binding Telephone2}"
+                                                             Style="{StaticResource EntryStyleProfil}">
+                                        <control:EntryRendererProfil.Behaviors>
+                                            <Behaviors:MaskedBehavior Mask="(+XXX) XXXXXXXX" />
+                                        </control:EntryRendererProfil.Behaviors>
+                                    </control:EntryRendererProfil>
+
+
+                                    <flex:FlexButton x:Name="AjoutButton"
+                        Visual="Material"
+                        FontSize="15"
+                        BackgroundColor="Transparent"
+                        ForegroundColor="#0D0D0D"
+                        HorizontalOptions="FillAndExpand"
+                        HasShadow="False"
+                        Padding="3"
+                        IconTintEnabled="False"
+                        HeightRequest="40"
+                        Icon="ic_add_circle.png"
+                        IconOrientation="Left"
+                        FontAttributes="None"
+                        HighlightForegroundColor="#E2E2E2"
+                        Text="Ajouter un autre contact"
+                        Clicked="FlexButton_Telephone"/>
+
+
+                                </StackLayout>
+
+                         
+
+                            
+                               <StackLayout Orientation="Vertical">
+
+                                <control:EntryRendererProfil Placeholder="Nationalite"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding Nationalite}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryStyleProfil}"/>
+
+
+                                </StackLayout>
+                                
+                            </StackLayout>
+
+
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical"                           
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Start"
+                                 Margin="25,10,25,0"
+                                     Spacing="0">
+
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand">
+
+
+                                <Frame Padding="6,0,6,0"
+                                CornerRadius="5"
+                                HorizontalOptions="StartAndExpand"
+                                BackgroundColor="#0D0D0D"
+                                HasShadow="False">
+
+
+                                    <Label Text="Sécurité"
+                                   TextColor="White"
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="18"
+                                   FontAttributes="Bold"/>
+
+                                </Frame>
+
+
+                            <ImageButton x:Name="ImageButtonSecurite"
+                                        Aspect="AspectFit"
+                                         BackgroundColor="Transparent"
+                                         Source="ic_remove_circle_outline.png"
+                                         HeightRequest="20"
+                                         WidthRequest="20"
+                                         HorizontalOptions="End"
+                                         Clicked="DefilSecuriteCommand">
+
+                           <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+            <VisualState x:Name="Normal">
+                <VisualState.Setters>
+                    <Setter Property="Opacity"
+                            Value="1" />
+                </VisualState.Setters>
+            </VisualState>
+
+            <VisualState x:Name="Pressed">
+                <VisualState.Setters>
+                    <Setter Property="Opacity"
+                            Value="0.5" />
+                </VisualState.Setters>
+            </VisualState>
+
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+</ImageButton>
+
+
+                            </StackLayout>
+
+                            <StackLayout x:Name="Securite"
+                                IsVisible="True">
+
+
+                             <StackLayout Orientation="Horizontal"
+                                          HorizontalOptions="FillAndExpand">
+
+                                 <Label Text="Question de securite pour la recuperation du mot de passe."
+                                   TextColor="#ADAAAA"
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="16"/>
+
+
+                            </StackLayout>
+
+
+                            <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand">
+
+                                    <control:EntryRendererProfil Placeholder="Veuiller saisir une question"
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding QuestionPiege}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryStyleProfil}"/>
+
+                                 <Label Text="Reponse"
+                                   TextColor="#ADAAAA"
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="16"/>
+
+                                <control:EntryRendererProfil Placeholder="....."
+                                                             HorizontalOptions="FillAndExpand"
+                                                             Keyboard="Text"
+                                                             Text="{Binding Reponse}"
+                                                             HeightRequest="40"
+                                                             Style="{StaticResource EntryStyleProfil}"/>
+
+
+                            </StackLayout>
+
+
+                        </StackLayout>
+
+
+                        </StackLayout>
+
+                       
+
+                    </StackLayout>
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+
+               <controls:FloatingActionButton Grid.Row="0"
+                                   Visual="Material"
+                                   ButtonColor="#0B9F0F"
+                                   ImageSource="ic_vicon.png"
+                                   Margin="0,0,5,5"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="End"
+                                   Command="{Binding ValiderProfilCommand}"/>
+
+                       
+
+
+              </Grid>
+   
+</ContentPage>

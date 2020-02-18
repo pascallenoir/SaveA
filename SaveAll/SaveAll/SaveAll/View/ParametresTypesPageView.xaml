@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sv="clr-namespace:AiForms.Renderers;assembly=SettingsView"
+             mc:Ignorable="d"
+             Title="Parametres"
+             x:Class="SaveAll.View.ParametresTypesPageView">
+   
+    <ContentPage.Content>
+        <sv:SettingsView HasUnevenRows="True"
+                         Margin="0,0,0,0"
+                         SeparatorColor="#bababa">
+
+            <sv:Section Title="Sélectionner un type pour en modifier le contenu"
+                        TextColor="#bababa">
+
+                <sv:CommandCell Title="Type évènement"
+                                Height="40"
+                                TitleFontSize="17"
+                                Command="{Binding ListEvenementCommand}" 
+                                CommandParameter="{Binding Parameter}"
+                                KeepSelectedUntilBack="true"/>
+
+                <sv:CommandCell Title="Type document"
+                                Height="40"
+                                TitleFontSize="17"
+                                Command="{Binding ListDocumentCommand}" 
+                                CommandParameter="{Binding Parameter}"
+                                KeepSelectedUntilBack="true"/>
+
+                <sv:CommandCell Title="Type membre"
+                                Height="40"
+                                TitleFontSize="17"
+                                Command="{Binding ListMembreCommand}" 
+                                CommandParameter="{Binding Parameter}"
+                                KeepSelectedUntilBack="true"/>
+                
+
+                <sv:CommandCell Title="Type patrimoine"
+                                Height="40"
+                                TitleFontSize="17"
+                                Command="{Binding ListPatrimoineCommand}" 
+                                CommandParameter="{Binding Parameter}"
+                                KeepSelectedUntilBack="true"/>
+
+
+            </sv:Section>
+
+
+        </sv:SettingsView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>SaveAll</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Savall souhaiterait accceder a votre bibliotheque photo</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Cette application nécessite un accès à l&apos;appareil photo pour prendre des photos.</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Nous sommes entrain d&apos;utiliser votre position</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Pouvons nous utiliser votre position</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Pouvons nous acceder a position constamment</string>
+	<key>CFBundleName</key>
+	<string>SaveAll</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.companyname.saveall</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+	</array>
+</dict>
+</plist>

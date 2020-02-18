@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             mc:Ignorable="d"
+             Title="Calendrier"
+             Style="{StaticResource ContentPageStylecontenu}"
+             x:Class="SaveAll.View.CalendarPageView">
+    
+    <ContentPage.Content>
+        <syncfusion:SfCalendar x:Name="calendar"
+                               SelectionMode="SingleSelection"
+                               MinDate="2019,9,1"
+                               ShowLeadingAndTrailingDays="False"
+                               HeaderHeight="60"
+                               ViewMode="YearView"
+                               YearViewMode="Date"
+                               EnableDatesInPast="True"
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="FillAndExpand"
+                               ShowInlineEvents="true" 
+                               InlineViewMode="Agenda" 
+                               MaximumEventIndicatorCount="2" 
+                               DataSource="{Binding CalendarInlineEvents}">
+            
+            <syncfusion:SfCalendar.MonthViewSettings>
+                <syncfusion:MonthViewSettings 
+		            DateSelectionColor="#0E385C"
+		            SelectedDayTextColor="#FFFFFF"
+                    CurrentMonthBackgroundColor="#80008"
+		            DayHeaderFormat="EEE"
+		            DayFontSize="12"
+		            DayHeaderFontSize="14"
+		            DayHeaderBackgroundColor="#FFFFFF"
+		            SelectionRadius="15"
+		            TodaySelectionTextColor="#FFFFFF"
+		            TodaySelectionBackgroundColor="#2699FB"
+                    TodayBorderColor="#D7ECFE"
+		            DayHeaderTextColor="Black"
+                    HeaderFontAttributes="Bold"
+		            HeaderFontSize="25"
+                    HeaderTextColor="Black"
+                    AgendaSelectedDateColor="#2699FB"
+                    HeaderBackgroundColor="#FFFFFF"
+		            WeekEndTextColor="Black"
+		            WeekEndBackgroundColor="#D7ECFE">
+
+                    <syncfusion:MonthViewSettings.InlineItemTemplate>
+                        <DataTemplate>
+                            <Button BackgroundColor="#1962A0" 
+                                    Text="{Binding Subject }" 
+                                    TextColor="White" />
+                        </DataTemplate>
+                    </syncfusion:MonthViewSettings.InlineItemTemplate>
+                </syncfusion:MonthViewSettings>
+            </syncfusion:SfCalendar.MonthViewSettings>
+            
+            <syncfusion:SfCalendar.YearViewSettings>
+                <syncfusion:YearViewSettings 
+			LayoutBackground="#ffffff"
+			DateTextColor="Black"
+			HeaderBackground="#ffffff"
+			YearHeaderTextColor="#2699FB"/>
+            </syncfusion:SfCalendar.YearViewSettings>
+
+        </syncfusion:SfCalendar>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

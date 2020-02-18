@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
+             xmlns:customControls="clr-namespace:SaveAll.Controls"
+             xmlns:local="clr-namespace:SaveAll.View" 
+             Title="Evenements"
+             Style="{StaticResource ContentPageStylecontenu}"
+             x:Class="SaveAll.View.HistoriqueEvenement">
+
+  <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" /> 
+            </Grid.RowDefinitions>
+            
+
+
+    <StackLayout Grid.Row="0"
+                 Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand">
+
+        <StackLayout Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand"
+                     Margin="10,10,10,0"
+                 VerticalOptions="Start">
+
+            <StackLayout Orientation="Horizontal"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="Start">
+
+                    <Label Text="Historique evenement"
+                           WidthRequest="300"
+                           HeightRequest="30"
+                           Style="{StaticResource TitleStyleHistoriue}"
+                            HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Start"/>
+
+                    <ImageButton Aspect="AspectFit"
+                                 BackgroundColor="White"
+                                HeightRequest="35"
+                                 WidthRequest="30"
+                                 Source="delete.png"
+                                 HorizontalOptions="End"
+                                 Command="{Binding DeleteAllCommand}"
+                                 VerticalOptions="Start"/>
+
+            </StackLayout>
+
+                <SearchBar SearchCommand="{Binding SearchCommand}"
+                           Text="{Binding SearchText}"
+                       HorizontalOptions="FillAndExpand"
+                       Placeholder="Rechercher un evenement..."/>
+
+            </StackLayout>
+
+   
+             
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Margin="0,5,0,0">
+            
+            <ListView ItemsSource="{Binding EvenementList}"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never"
+                            BackgroundColor="#F1F1F1"
+                            SeparatorVisibility="None"
+                            RowHeight="100"
+                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+             
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                     <customControls:ExtendedViewCell SelectedBackgroundColor="#66ffffff">
+
+                        <local:CardsViewTemplateForEvenementHisto/>
+
+                     </customControls:ExtendedViewCell>
+                           
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+         </ListView>
+        </StackLayout>
+
+
+   </StackLayout>
+
+    <controls:FloatingActionButton Grid.Row="0"
+                                    ButtonColor="#0B9F0F"
+                                   Margin="0,0,5,5"
+                                   Visual="Material"
+                                   Command="{Binding AjouterCommand}"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="End"
+                                   Image="ic_addicon.png"/>
+
+
+       
+
+        </Grid>
+</ContentPage>

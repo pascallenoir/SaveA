@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage 
+          xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+          xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+          xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:custom="clr-namespace:SaveAll.Controls"
+                 xmlns:Behaviors="clr-namespace:SaveAll.Behaviors"
+    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SaveAll.View.NouveauPatrimoinePageView"
+             BackgroundInputTransparent="False"
+             IsAnimating="True"
+             HasKeyboardOffset="False">
+
+    <popup:PopupPage.Animation>
+
+         <animations:MoveAnimation   
+                      PositionIn="Bottom"  
+                      PositionOut="Bottom"
+                      DurationIn="200"
+                      DurationOut="300"
+                      EasingIn="BounceOut"
+                      HasBackgroundAnimation="True"/>  
+
+    </popup:PopupPage.Animation>
+
+        <yummy:PancakeView 
+                    CornerRadius="14,14,0,0"
+                    Elevation="10"
+                    BackgroundColor="#F1F1F1"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+
+            
+
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="20">
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="White"
+                         HeightRequest="40"
+                         Padding="10,5,10,5"
+                         VerticalOptions="Start"
+                         Spacing="10">
+
+                      <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+                        
+                <Label Text="Annuler"
+                       TextColor="Red"
+                       FontSize="18"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"/>
+
+
+                          <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AnnulerCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                <Label Text="Patrimoine"
+                       TextColor="#0D0D0D"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center"/>
+
+
+                
+                <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+
+                <Label Text="Ajouter"
+                       IsEnabled="False"
+                       FontSize="18"
+                       TextColor="Red"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"/>
+
+                    <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EnregistrementCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+
+            </StackLayout>
+
+
+
+            <ScrollView Orientation="Vertical"
+                         VerticalScrollBarVisibility="Never">
+
+          <StackLayout Orientation="Vertical"
+                       VerticalOptions="EndAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Padding="0,0,0,20"
+                       Spacing="20">
+
+
+
+              <StackLayout Orientation="Vertical"
+                       HorizontalOptions="FillAndExpand"
+                       Spacing="1">
+
+           <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+            <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding NomDuBien}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Nom du bien"/>
+
+                
+             </StackLayout>
+
+              </Frame>
+
+                <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+            <custom:EntryRendererMenu Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding NumeroDuBien}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Numero du bien"/>
+
+                
+             </StackLayout>
+
+              </Frame>
+
+ </StackLayout>
+
+           
+
+             <StackLayout Orientation="Vertical"
+                          Spacing="1">
+
+                 <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40">
+
+               <StackLayout Orientation="Horizontal"
+                            HorizontalOptions="StartAndExpand">
+
+                    <Label Text="Type de bien"
+                       TextColor="#0D0D0D"
+                       Padding="5,0,0,0"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                 </StackLayout>
+
+                     <StackLayout Orientation="Horizontal"
+                                  Padding="0,0,8,0"
+                                  HorizontalOptions="EndAndExpand">
+
+                           <custom:EntryRendererPickerMenu
+                            Title="Choisir"
+                            ItemsSource="{Binding TypePatrimoineList}"
+                            ItemDisplayBinding="{Binding NomTypePatrimoine}"
+                            SelectedItem="{Binding TypePatrimoineSelect, Mode=TwoWay}"
+                            TitleColor="#E2E2E2"
+                            HorizontalOptions="EndAndExpand"
+                            FontSize="16"/>
+
+                                </StackLayout>
+
+          </StackLayout>
+
+              </Frame>
+
+                      <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False" 
+                        BorderColor="#E0DCDC">
+
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40">
+
+                                <StackLayout Orientation="Horizontal"
+                                  HorizontalOptions="StartAndExpand">
+
+                       <Label Text="Date d'aquisition"
+                       TextColor="#0D0D0D"
+                       Padding="5,0,0,0"
+                       FontSize="16"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                  Padding="0,0,8,0"
+                                  HorizontalOptions="EndAndExpand">
+
+                                  <custom:EntryRendererDatePicker
+                                   HorizontalOptions="EndAndExpand"
+                                   Date="{Binding DateAcquisition}"
+                                   Margin="0,0,0,0"
+                                   FontSize="16"
+                                   TextColor="#0D0D0D"/>
+
+                                </StackLayout>
+
+
+                            </StackLayout>
+
+              </Frame>
+
+
+             <Frame Padding="0"
+                    CornerRadius="0"
+                     HasShadow="False"
+                     BorderColor="#E0DCDC">
+
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+            <custom:EntryRendererMenu Keyboard="Numeric"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding ValeurAcquisition}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Valeur d'aquisition">
+
+                                    <custom:EntryRendererMenu.Behaviors>
+                                        <Behaviors:MaskedBehavior Mask="XXX.XXX.XXX.XXX" />
+                                    </custom:EntryRendererMenu.Behaviors>
+                                </custom:EntryRendererMenu>
+
+
+
+
+
+                            </StackLayout>
+
+              </Frame>
+
+
+                    <Frame Padding="0"
+                    CornerRadius="0"
+                     HasShadow="False"
+                     BorderColor="#E0DCDC">
+
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         Spacing="0">
+
+            <custom:EntryRendererMenu Keyboard="Numeric"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   HeightRequest="40"
+                                   TextColor="#0D0D0D"
+                                   Text="{Binding ValeurActuel}"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Valeur Actuelle">
+                                    <custom:EntryRendererMenu.Behaviors>
+                                        <Behaviors:MaskedBehavior Mask="XXX.XXX.XXX.XXX" />
+                                    </custom:EntryRendererMenu.Behaviors>
+                                </custom:EntryRendererMenu>
+
+
+
+
+
+                            </StackLayout>
+
+              </Frame>
+
+           </StackLayout>
+
+
+
+                    <Frame Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        BorderColor="#E0DCDC">
+
+                        <StackLayout Orientation="Horizontal">
+
+                            <custom:EntryRendererMenuEditor Keyboard="Text"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="16"
+                                   MaxLength="500"
+                                   Text="{Binding DescriptionPatrimoine}"
+                                   TextColor="#0D0D0D"
+                                   HeightRequest="150"
+                                   Style="{StaticResource EntryStylemenu}"
+                                   Placeholder="Notes..."/>
+
+
+                        </StackLayout>
+
+                    </Frame>
+
+
+
+
+                    <flex:FlexButton
+                        Visual="Material"
+                        FontSize="16"
+                        BackgroundColor="White"
+                        BorderColor="#E2E2E2"
+                        BorderThickness="0,1,0,1"
+                        ForegroundColor="#2699FB"
+                        HorizontalOptions="FillAndExpand"
+                        HasShadow="False"
+                        Padding="3"
+                        HeightRequest="40"
+                        FontAttributes="None"
+                        HighlightForegroundColor="#E2E2E2"
+                        Text="Ajouter une image"
+                        ClickedCommand="{Binding SelectImagesCommand}"/>
+
+
+
+
+  
+
+           <StackLayout x:Name="zoneImage"
+                        Padding="10"
+                        HeightRequest="400">
+
+    <flv:FlowListView FlowColumnCount="3" x:Name="listItems" FlowItemsSource="{Binding Media}"
+                        SeparatorVisibility="None"
+                        HasUnevenRows="false" RowHeight="50">
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate >
+                            <Grid>
+                               <ffimageloading:CachedImage  DownsampleToViewSize="true" HeightRequest="100"  Source="{Binding PreviewPath}"  Aspect="AspectFill" HorizontalOptions="FillAndExpand">
+                               </ffimageloading:CachedImage>
+                               <Image Source="play" IsVisible="false" HorizontalOptions="End" VerticalOptions="End">
+                                   <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding Type}" Value="Video">
+                                             <Setter Property="IsVisible" Value="True" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                               </Image>
+                            </Grid>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+                      
+            </StackLayout>
+
+
+
+              
+                       <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="CenterAndExpand"
+                         HasShadow="False">
+
+                        
+                <Label x:Name="BoutonLocaliser"
+                       Text="Localisation"
+                       TextColor="#2699FB"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand"/>
+
+
+
+                          <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AfficherCarte"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+
+       <Frame x:Name="FrameCarte"
+              Padding="0"
+              CornerRadius="0"
+              Margin="0,0,0,10"
+              IsVisible="False"
+              HeightRequest="450"
+              HasShadow="False"
+              BorderColor="#E0DCDC">
+
+                   <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="450"
+                         Spacing="0">
+
+
+             <custom:BindableMap x:Name="CarteMaps"
+                                 MapType="Street"
+                                 HasScrollEnabled="True"
+                                 HasZoomEnabled="True"
+                                 IsShowingUser="True"
+                                 IsVisible="False"
+                                 MoveToLastRegionOnLayoutChange="false"
+                                 MapPosition="{Binding MyPosition}"
+                                 MapPins="{Binding PinCollection}" />
+
+
+                       
+                      
+            </StackLayout>
+
+            </Frame>
+
+             
+
+          </StackLayout> 
+
+         </ScrollView>
+
+        </StackLayout>
+
+       </yummy:PancakeView>
+</popup:PopupPage>

@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:custom="clr-namespace:SaveAll.Controls" xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex" mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             Style="{StaticResource ContentPageStyleIdentification}"
+             x:Class="SaveAll.View.InscriptionView">
+<ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="CenterAndExpand"
+                         Margin="30,20"
+                         HorizontalOptions="FillAndExpand">
+
+
+           
+                <StackLayout Orientation="Horizontal"
+                         VerticalOptions="Start"
+                         Margin="0,0,0,10"
+                         HorizontalOptions="CenterAndExpand"
+                            Spacing="-5" >
+
+                    <StackLayout Orientation="Vertical"
+                         VerticalOptions="Start"
+                         HorizontalOptions="CenterAndExpand">
+
+                        <Image Source="ic_business_center.png"
+                               HeightRequest="70"
+                               WidthRequest="80"
+                               Aspect="AspectFit"/>
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical"
+                             VerticalOptions="Center"
+                             HorizontalOptions="CenterAndExpand"
+                             Spacing="-8">
+                        
+
+                        <Label FontSize="Title"
+                      TextColor="White"
+                               VerticalOptions="CenterAndExpand"
+                      Text="SAVEALL">
+                        </Label>
+
+                        <Label TextColor="White"
+                         VerticalOptions="CenterAndExpand"
+                      Text="Donnees personnelles">
+                        </Label>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+
+                <custom:MaterialFrame CornerRadius="3"
+                       HasShadow="True"
+                       Elevation="10"
+                       Padding="0"
+                       Style="{StaticResource Framestyle}">
+
+            <StackLayout Orientation="Vertical"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Spacing="1">
+
+                
+
+                <custom:EntryRendererIdentiteHaut 
+                                       Placeholder="Nom d'utilisateur"
+                                       HorizontalOptions="FillAndExpand"
+                                       Keyboard="Text"
+                                       HeightRequest="48"
+                                       Text="{Binding Login}"
+                                       Style="{StaticResource EntryStyle}"/>
+
+
+              
+
+                <custom:EntryRenderers x:Name="Pass"
+                                       Keyboard="Text"
+                                       HorizontalOptions="FillAndExpand"
+                                       HeightRequest="48"
+                                       Text="{Binding Pass}"
+                                       Style="{StaticResource EntryPassStyle}"
+                                       Placeholder="Mot de passe"/>
+
+                  
+
+                <custom:EntryRendererIdentiteBas x:Name="ConfirmPass"
+                                       Keyboard="Text"
+                                       HorizontalOptions="FillAndExpand"
+                                       HeightRequest="48"
+                                       Text="{Binding ConfirmPass}"
+                                       Style="{StaticResource EntryPassStyle}"
+                                       Placeholder="Confirmer mot de passe"/>
+
+
+                       
+             
+             </StackLayout>
+  
+            </custom:MaterialFrame>
+
+                <Frame Padding="0"
+                                HasShadow="False"
+                                BackgroundColor="Transparent">
+
+                        <Label x:Name="LabelPassword" 
+                               TextColor="White" 
+                               HorizontalOptions="EndAndExpand" 
+                               Text="Afficher mot de passe" 
+                               FontSize="Micro"></Label>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AuClickSurChamps"/>
+                        </Frame.GestureRecognizers>
+                        </Frame>
+
+
+
+                <StackLayout Orientation="Vertical"
+                             VerticalOptions="Center"
+                             Margin="0,15,0,0"
+                             HorizontalOptions="FillAndExpand">
+
+                         <flex:FlexButton
+                        CornerRadius="4"
+                        Visual="Material"
+                        FontSize="17"
+                        ForegroundColor="White"
+                        BackgroundColor="#21FFFFFF"
+                        HasShadow="True"
+                        HeightRequest="44"
+                        FontAttributes="None"
+                        Text="S'inscrire"
+                        ClickedCommand="{Binding InscriptionCommand}"
+                        HighlightBackgroundColor="#21FFFFFF"
+                        HighlightForegroundColor="White"/>
+
+
+              
+                </StackLayout>
+
+   <StackLayout Orientation="Horizontal"
+                           Margin="0,10,0,0">
+       
+                           <BoxView HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="Center" 
+                                    WidthRequest="1" 
+                                    HeightRequest="1" 
+                                    Color="White"/>
+       
+                            <Label Text="ou" 
+                                   TextColor="White"
+                                   VerticalOptions="StartAndExpand"
+                                   />
+       
+                           <BoxView HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="Center" 
+                                    WidthRequest="1" 
+                                    HeightRequest="1" 
+                                    Color="White"/>  
+       
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal"
+                             Margin="0,10"
+                             HorizontalOptions="FillAndExpand">
+ 
+                    <StackLayout Orientation="Vertical"
+                                 HorizontalOptions="CenterAndExpand">
+
+                        <Frame Padding="0"
+                                HasShadow="False"
+                                Style="{StaticResource FramestyleButton}">
+
+                       <Label Style="{StaticResource LabelUnderlineStyle}"
+                              Text="Importer une base de données"
+                              FontSize="17"
+                              TextColor="White"></Label>
+
+                              <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ImportationCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+
+                    </StackLayout>
+
+                </StackLayout>
+
+
+              <StackLayout Orientation="Horizontal"
+                                     Margin="0,20,0,0">
+                  
+                      <StackLayout VerticalOptions="Center"
+                                   HorizontalOptions="StartAndExpand">
+                          
+                          <Label TextColor="White"
+                                 FontSize="17"
+                              Text="Déja inscrit ?"></Label>
+                      </StackLayout>
+                
+                  
+
+                      <StackLayout Orientation="Vertical"
+                              VerticalOptions="End"
+                              HorizontalOptions="FillAndExpand">
+
+
+                           <flex:FlexButton
+                        CornerRadius="4"
+                        Visual="Material"
+                        FontSize="17"
+                        ForegroundColor="White"
+                        BackgroundColor="#21FFFFFF"
+                        HasShadow="True"
+                        Padding="3"
+                        HeightRequest="44"
+                        FontAttributes="None"
+                        Text="Connexion"
+                        ClickedCommand="{Binding ConnexionCommand}"
+                        HighlightBackgroundColor="#21FFFFFF"
+                        HighlightForegroundColor="White"/>
+
+                          
+
+                        </StackLayout>
+                        
+                  </StackLayout>
+
+          </StackLayout>  
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

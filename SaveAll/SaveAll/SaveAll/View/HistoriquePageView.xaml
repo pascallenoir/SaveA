@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:SaveAll.View"
+            mc:Ignorable="d"
+             Title="Historique" 
+             NavigationPage.HasNavigationBar="True"
+             x:Class="SaveAll.View.HistoriquePageView">
+    
+   <TabbedPage.BarBackgroundColor>
+        <OnPlatform x:TypeArguments="Color" iOS="#2699FB" Android="#2699FB" />
+    </TabbedPage.BarBackgroundColor>
+
+
+    <TabbedPage.BarTextColor>
+        <OnPlatform x:TypeArguments="Color" iOS="#FFFFFF" Android="#FFFFFF"/>
+    </TabbedPage.BarTextColor>
+
+    <local:HistoriqueDocument>
+    </local:HistoriqueDocument>
+    <local:HistoriqueEvenement>
+    </local:HistoriqueEvenement>
+    <local:HistoriqueMembre>
+    </local:HistoriqueMembre>
+    <local:HistoriquePatrimoine>
+    </local:HistoriquePatrimoine>
+
+</TabbedPage>

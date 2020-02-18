@@ -1,0 +1,152 @@
+﻿<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:custom="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+                  xmlns:local="clr-namespace:SaveAll.Behaviors"
+                  MasterBehavior="Popover"
+                  Title="Savall"
+                  xmlns:converters="clr-namespace:SaveAll.Converters"
+                  NavigationPage.HasNavigationBar="False" 
+                  x:Class="SaveAll.View.AccueilPageView">
+
+     <MasterDetailPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteToImageFieldConverter x:Key="byteToImageSource" />
+        </ResourceDictionary>
+    </MasterDetailPage.Resources>
+
+<MasterDetailPage.Master>
+
+
+    <ContentPage Title="Menu">
+
+        <StackLayout Orientation="Vertical">
+            
+      <StackLayout Style="{StaticResource StacklayoutMasterDetailBackground }"
+                    Orientation="Vertical"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand">
+        
+       
+        <StackLayout Style="{StaticResource StacklayoutMasterDetail }"
+                    Orientation="Horizontal"
+                     Padding="10"
+                     HeightRequest="100"
+                     Spacing="0">
+
+             <Frame Padding="0"
+                    Visual="Material"
+                    VerticalOptions = "CenterAndExpand" 
+                    HorizontalOptions="StartAndExpand"
+                    BackgroundColor="Transparent"
+                    HasShadow="False">
+            
+            <custom:CircleImage
+                    x:Name="imageProfil"
+                    BorderColor="White"
+                    BorderThickness="2"
+                    Source="{Binding Photo, Converter={StaticResource byteToImageSource}}"
+                     Aspect = "AspectFill"
+                     HeightRequest="90"
+                     WidthRequest="90"
+                     VerticalOptions = "CenterAndExpand" 
+                     HorizontalOptions = "CenterAndExpand"  />
+
+                      <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PhotoCommand}"/>
+                            </Frame.GestureRecognizers>
+             </Frame>
+
+            
+
+
+          <Label Style="{StaticResource LabelMasterDetailEntete}"
+                 Text="Nom Utilisateur"
+                 x:Name="username"
+                 MaxLines="1"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="FillAndExpand"/>
+
+            
+
+        </StackLayout>
+
+        <ListView x:Name="navigationDrawerList"
+                  RowHeight="50"
+                  SeparatorVisibility="Default"
+                  BackgroundColor="White"
+                  ItemTapped="OnMenuItemSelected">
+
+        
+
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                
+                <!-- Main design for our menu items -->
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Padding="20,10,0,10"
+                             Spacing="20">
+
+                  <Image Source="{Binding IconSource}"
+                         Aspect="AspectFit"
+                         HeightRequest="25"
+                         WidthRequest="25"
+                         VerticalOptions="Center" />
+
+                  <Label Style="{StaticResource LabelMasterDetail}"
+                         Text="{Binding Title}"
+                         VerticalOptions="Center"/>
+                </StackLayout>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+          
+        </ListView>
+      </StackLayout>
+
+             <Frame Padding="0"
+                           HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+   
+                        
+       <StackLayout Style="{StaticResource StacklayoutMasterDetail}"
+                              VerticalOptions="End"
+                              HorizontalOptions="FillAndExpand"
+                              Orientation="Horizontal"
+                              Padding="20,10,0,10"
+                              Spacing="20">
+
+                  <Image Source="log_out.png"
+                         Aspect="AspectFit"
+                         HeightRequest="25"
+                         WidthRequest="25"
+                         VerticalOptions="Center" />
+
+                  <Label Style="{StaticResource LabelMasterDetail}"
+                         Text="Deconnexion"
+                         FontAttributes="None"
+                         VerticalOptions="Center"/>
+                </StackLayout>
+
+                   <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DeconnexionCommand}"/>
+                            </Frame.GestureRecognizers>
+             </Frame>
+        
+
+    </StackLayout>
+    </ContentPage>
+  </MasterDetailPage.Master>
+
+  <MasterDetailPage.Detail>
+    <NavigationPage>
+
+    </NavigationPage>
+  </MasterDetailPage.Detail>
+</MasterDetailPage>
+    
+   

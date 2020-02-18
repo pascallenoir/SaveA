@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             x:Class="SaveAll.View.CardsViewFilActualiteEvenements">
+
+    <ContentView.Content>
+
+    <StackLayout Margin="10,10,10,10">
+        
+         <pancake:PancakeView 
+                   CornerRadius="20"
+                    Elevation="10"
+                    Visual="Material"
+                    HasShadow="True"
+                    WidthRequest="300"
+                    HeightRequest="160"
+                    BackgroundColor="White"
+                    HorizontalOptions="CenterAndExpand">
+
+
+             
+             <Grid Padding="10,10,10,10"
+                     RowSpacing="5">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="9*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+
+                    <Image  Grid.Row="0" Grid.Column="0" 
+                            Source="calendar.png"
+                            Aspect="AspectFit"
+                            HeightRequest="20"
+                            WidthRequest="20"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="Start"/>
+
+
+
+                      <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                             Text="{Binding DateDeb, StringFormat='{0:dd MMMM , yyyy}'}"
+                             VerticalOptions="CenterAndExpand"
+                             FontSize="17"
+                             TextColor="#F24444"
+                             FontAttributes="Bold"
+                             HorizontalOptions="StartAndExpand"  />
+
+
+                    <Label  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                            Text="{Binding nomEvenement}"
+                            MaxLines="1"
+                            LineBreakMode="TailTruncation"
+                            Style="{StaticResource LabelTitreStackLayoutHistorique}"  />
+
+
+                     <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                            Text="{Binding DescriptionEvenement}"
+                            Style="{StaticResource LabelDescriptionStackLayoutHistorique}"
+                            MaxLines="2"
+                            LineBreakMode="TailTruncation"/>
+
+
+                    <Button  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                             Text="Supprimer"
+                             HeightRequest="30"
+                             BackgroundColor="#2699FB"
+                             Padding="5,0"
+                             Command="{Binding DeleteEvenementCommand}"
+                             HorizontalOptions="EndAndExpand"
+                            Style="{StaticResource ButtonStyleFilActualite}"/>
+
+
+             
+            </Grid>
+
+                  </pancake:PancakeView>
+        
+        
+    </StackLayout>
+    </ContentView.Content>
+</ContentView>

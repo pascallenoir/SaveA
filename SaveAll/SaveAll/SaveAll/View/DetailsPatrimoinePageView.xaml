@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:SaveAll.Controls"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="SaveAll.View.DetailsPatrimoinePageView"
+             xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex" 
+             Title="Details Patrimoine">
+
+
+    <NavigationPage.TitleView>
+
+        <StackLayout Orientation="Horizontal"
+                     Margin="{OnPlatform iOS='0,0,5,0', Android='0,0,20,0', Default=0}"
+                     HorizontalOptions="FillAndExpand">
+
+            <StackLayout Orientation="Horizontal"
+                     Margin="{OnPlatform iOS='0,0,0,0', Android='0,0,0,0', Default=0}"
+                     HorizontalOptions="CenterAndExpand">
+
+                <Label Text="Details patrimoine"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   TextColor="White"
+                   VerticalOptions="Start"/>
+
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                     Margin="{OnPlatform iOS='0,0,0,0', Android='0,0,0,0', Default=0}"
+                     HorizontalOptions="End">
+
+
+                <Frame 
+                         Padding="0"
+                         BackgroundColor="Transparent"
+                         HasShadow="False">
+
+
+                    <Label Text="Modifier"
+                       IsEnabled="False"
+                       FontSize="18"
+                       TextColor="White"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"/>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding MiseAjourPageCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"
+                     BackgroundColor="White"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
+
+
+         
+
+            <ScrollView Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never">
+
+            <StackLayout Orientation="Vertical"
+                     VerticalOptions="FillAndExpand"
+                       Margin="20,20,20,20"
+                         Spacing="20"
+                     HorizontalOptions="FillAndExpand">
+
+
+                <StackLayout Orientation="Vertical"
+                     VerticalOptions="Start"
+                             Spacing="5"
+                     HorizontalOptions="StartAndExpand">
+
+                <Label 
+                   Text="{Binding NomDuBien}"
+                   Style="{StaticResource TitleStyleHistoriue}"
+                   VerticalTextAlignment="Center"/>
+
+                    <Label 
+                   Text="{Binding NumeroDuBien}"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Center"/>
+
+             </StackLayout>
+
+             <StackLayout Orientation="Vertical"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
+
+
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Type de bien :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                            <Label Text="{Binding NomTypePatrimoine}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Date aquisition :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                            <Label Text="{Binding DateAcquisition, StringFormat='{0:dd MMMM , yyyy}'}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Valeur d'acquisition :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                 <Label Text="{Binding ValeurAcquisition}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Valeur Actuelle :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                 <Label Text="{Binding ValeurActuel}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Vertical"
+                                Margin="0,20,0,0"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Description"
+                        TextColor="Black"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+                 <Label Text="{Binding DescriptionPatrimoine}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource TextLabelStylePourDetails}"/>
+
+
+                 </StackLayout>
+
+                 
+                 <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand">
+
+                 <Label Text="Images :"
+                   Style="{StaticResource TextLabelStylePourDetails}"
+                   VerticalTextAlignment="Start"/>
+
+               <StackLayout x:Name="zoneImage"
+                        Padding="10"
+                        HeightRequest="400">
+
+                <flv:FlowListView FlowColumnCount="3" x:Name="listItems" FlowItemsSource="{Binding Media}"
+                        SeparatorVisibility="None"
+                        HasUnevenRows="false" RowHeight="200" >
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate >
+                            <Grid>
+                               <ffimageloading:CachedImage  DownsampleToViewSize="true" HeightRequest="400"  Source="{Binding PreviewPath}"  Aspect="AspectFill" HorizontalOptions="FillAndExpand">
+                               </ffimageloading:CachedImage>
+                               <Image Source="play" IsVisible="false" HorizontalOptions="End" VerticalOptions="End">
+                                   <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding Type}" Value="Video">
+                                             <Setter Property="IsVisible" Value="True" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                               </Image>
+                            </Grid>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+
+
+                      
+            </StackLayout>
+
+                       </StackLayout>
+
+                  <Frame x:Name="FrameCarte"
+                   Padding="0"
+              CornerRadius="0"
+              Margin="0,0,0,10"
+              HeightRequest="400"
+              HasShadow="False"
+              BorderColor="#E0DCDC">
+
+                   <StackLayout Orientation="Horizontal"
+                         BackgroundColor="White"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="450"
+                         Spacing="0">
+
+
+             <custom:BindableMap x:Name="CarteMaps"
+                                 MapType="Street"
+                                 HasScrollEnabled="True"
+                                 HasZoomEnabled="True"
+                                 IsShowingUser="True"
+                                 MoveToLastRegionOnLayoutChange="false"
+                                 MapPosition="{Binding MyPosition}"
+                                 MapPins="{Binding PinCollection}" />
+
+
+                       
+                      
+            </StackLayout>
+
+            </Frame>
+
+            </StackLayout>
+
+          
+        </StackLayout>
+
+       </ScrollView>
+
+
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand"
+                         BackgroundColor="#F1F1F1"
+                         HorizontalOptions="FillAndExpand">
+
+
+
+                <flex:FlexButton
+                        Visual="Material"
+                        FontSize="17"
+                        ForegroundColor="Red"
+                        BorderColor="#8E8B8B"
+                        BorderThickness="0,1,0,0"
+                        BackgroundColor="#F1F1F1"
+                        HasShadow="False"
+                        HeightRequest="45"
+                        FontAttributes="None"
+                        ClickedCommand="{Binding DeleteCommand}"
+                        HighlightBackgroundColor="#F1F1F1"
+                        HighlightForegroundColor="Red"
+                        VerticalOptions="End"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Supprimer le bien"/>
+
+            </StackLayout>
+
+          
+        </StackLayout>
+
+    </ContentPage.Content>
+
+
+</ContentPage>
