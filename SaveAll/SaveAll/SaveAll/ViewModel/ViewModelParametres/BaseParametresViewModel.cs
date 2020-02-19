@@ -9,25 +9,8 @@ namespace SaveAll.ViewModel.ViewModelParametres
 {
     public class BaseParametresViewModel : ViewModelDeBase
     {
-
         public INavigation _navigation;
 
-
-
-        bool _notifications = true;
-        public bool Notifications
-        {
-            get => _notifications;
-            set
-            {
-                _notifications = value;
-                NotifyPropertyChanged("Notifications");
-            }
-        }
-
-
-
-
-       
+        public bool Notifications { get; set; }
     }
 }

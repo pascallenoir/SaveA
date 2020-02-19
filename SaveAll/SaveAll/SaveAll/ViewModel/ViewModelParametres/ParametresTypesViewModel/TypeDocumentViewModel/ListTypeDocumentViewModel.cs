@@ -57,8 +57,8 @@ namespace SaveAll.ViewModel.ViewModelParametres.ParametresTypesViewModel.TypeDoc
 
         async Task FetchtypeDocument()
         {
-
-            TypeDocumentList = await new DatabaseHelper().TousLesTypesDocumentsAsync();            // fonctionnalite pour recuperer tous les enregistrements
+            TypeDocumentList.Clear();
+            TypeDocumentList.AddRange(await new DatabaseHelper().TousLesTypesDocumentsAsync());            // fonctionnalite pour recuperer tous les enregistrements
 
         }
 

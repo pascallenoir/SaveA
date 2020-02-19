@@ -44,19 +44,11 @@ namespace SaveAll.ViewModel.ViewModelEvenement
             await _navigation.PushAsync(pr);
         }
 
-        Evenement _selectedItem;
-        public Evenement SelectedItem
+        public Evenement SelectedItem { get; set; }
+
+        void OnSelectedItemChanged()
         {
-            get => _selectedItem;
-            set
-            {
-                if (value != null)
-                {
-                    _selectedItem = value;
-                    NotifyPropertyChanged("SelectedItem");
-                    ShowEvenementsDetails(value.id);
-                }
-            }
+            ShowEvenementsDetails(SelectedItem.id);
         }
     }
 }

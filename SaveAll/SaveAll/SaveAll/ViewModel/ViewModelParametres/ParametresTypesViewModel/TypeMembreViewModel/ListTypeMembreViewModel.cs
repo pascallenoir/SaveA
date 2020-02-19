@@ -56,7 +56,8 @@ namespace SaveAll.ViewModel.ViewModelParametres.ParametresTypesViewModel.TypeDoc
 
         async Task FetchtypeMembre()
         {
-            TypeMembreList = await new DatabaseHelper().TousLesTypesMembres();            // fonctionnalite pour recuperer tous les enregistrements
+            TypeMembreList.Clear();
+            TypeMembreList.AddRange(await new DatabaseHelper().TousLesTypesMembres());            // fonctionnalite pour recuperer tous les enregistrements
 
         }
 

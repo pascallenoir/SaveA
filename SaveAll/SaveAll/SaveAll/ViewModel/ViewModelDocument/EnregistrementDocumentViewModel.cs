@@ -29,7 +29,7 @@ namespace SaveAll.ViewModel.ViewModelDocument
         {
             _navigation = navigation;
             _document = new Document();
-            _typeDocument = new TypeDocument();
+            TypeDocument = new TypeDocument();
             _documentValidator = new DocumentValidator();
             baseParametresViewModel = new BaseParametresViewModel();
             _localNotificationService = DependencyService.Get<ILocalNotificationService>();

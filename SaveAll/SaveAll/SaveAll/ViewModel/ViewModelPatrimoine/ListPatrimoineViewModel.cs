@@ -16,7 +16,6 @@ namespace SaveAll.ViewModel.ViewModelPatrimoine
 
         public ICommand DeleteAllCommand { get; private set; }
         public ICommand AjouterCommand { get; private set; }
-        public ICommand SearchCommand { get; private set; }
 
 
         public ListPatrimoineViewModel(INavigation navigation)
@@ -47,10 +46,8 @@ namespace SaveAll.ViewModel.ViewModelPatrimoine
 
         async Task FetchPatrimoine()
         {
-
-            PatrimoineList = await App.MembreActuel.SesBiens();            // fonctionnalite pour recuperer tous les enregistrements
-
-
+            PatrimoineList.Clear();
+            PatrimoineList.AddRange(await App.MembreActuel.SesBiens());            // fonctionnalite pour recuperer tous les enregistrements
         }
 
 
@@ -98,19 +95,12 @@ namespace SaveAll.ViewModel.ViewModelPatrimoine
             await _navigation.PushAsync(pr);
         }
 
-        Patrimoine _selectedItem;
-        public Patrimoine SelectedItem
+        public Patrimoine SelectedItem { get; set; }
+
+        // This method gets called because of PropertyChanged.Fody. Follows the convention: void On[MyProperty]Changed()
+        void OnSelectedItemChanged()
         {
-            get => _selectedItem;
-            set
-            {
-                if (value != null)
-                {
-                    _selectedItem = value;
-                    NotifyPropertyChanged("SelectedItem");
-                    ShowPatrimoineDetails(value.Id);
-                }
-            }
+            ShowPatrimoineDetails(SelectedItem.Id);
         }
     }
 }

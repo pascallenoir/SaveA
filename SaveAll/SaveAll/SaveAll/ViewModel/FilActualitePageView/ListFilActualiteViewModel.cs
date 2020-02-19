@@ -236,8 +236,9 @@ namespace SaveAll.ViewModel.FilActualitePageView
 
         async Task FetchDocumentsAsync()
         {
-            
-            DocumentList = await App.MembreActuel.SesDocuments();
+            DocumentList.Clear();
+            DocumentList.AddRange(await App.MembreActuel.SesDocuments());
+
             TypeDocumentList = await new DatabaseHelper().TousLesTypesDocumentsAsync();
             // fonctionnalite pour recuperer tous les enregistrements
 

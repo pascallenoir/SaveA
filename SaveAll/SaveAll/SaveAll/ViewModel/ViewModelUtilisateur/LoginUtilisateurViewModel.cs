@@ -17,16 +17,7 @@ namespace SaveAll.ViewModel.ViewModelUtilisateur
         public ICommand ForgetPasswordPageCommand { get; private set; }
         public ICommand ExitCommand { get; private set; }
 
-        private bool _state;
-        public bool State
-        {
-            get => _state;
-            set
-            {
-                _state = value;
-                NotifyPropertyChanged("State");
-            }
-        }
+        public bool State { get; set; }
 
 
         public LoginUtilisateurViewModel(INavigation navigation )
@@ -94,6 +85,12 @@ namespace SaveAll.ViewModel.ViewModelUtilisateur
 
         async Task LoginUtilisateur()
         {
+            if (string.IsNullOrWhiteSpace(_membre.Login)) // I had to do this because _membre.Login always seemed to be null.
+                _membre.Login = Login;
+
+            if (string.IsNullOrWhiteSpace(_membre.Pass)) // I had to do this because _membre.Pass always seemed to be null.
+                _membre.Pass = Pass;
+
             var validationDesInfos = _utilisateurLoginValidator.Validate(this);
 
             if (validationDesInfos.IsValid)

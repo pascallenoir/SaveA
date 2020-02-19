@@ -41,8 +41,8 @@ namespace SaveAll.ViewModel.ViewModelMembre
         /// <returns></returns>
         async Task FetchMembre()
         {
-
-            MembreList = await App.MembreActuel.EnfantsAsync();            // fonctionnalite pour recuperer tous les enregistrements
+            MembreList.Clear();
+            MembreList.AddRange(await App.MembreActuel.EnfantsAsync());            // fonctionnalite pour recuperer tous les enregistrements
         }
 
 
@@ -87,19 +87,12 @@ namespace SaveAll.ViewModel.ViewModelMembre
             await _navigation.PushAsync(new DetailMembrePageView(selectedMembreID));
         }
 
-        Membre _selectedItem;
-        public Membre SelectedItem
+        public Membre SelectedItem { get; set; }
+
+        // This method gets called because of PropertyChanged.Fody. Follows the convention: void On[MyProperty]Changed()
+        void OnSelectedItemChanged()
         {
-            get => _selectedItem;
-            set
-            {
-                if (value != null)
-                {
-                    _selectedItem = value;
-                    NotifyPropertyChanged("SelectedItem");
-                    ShowMembreDetails(value.Id);
-                }
-            }
+            ShowMembreDetails(SelectedItem.Id);
         }
     }
 }

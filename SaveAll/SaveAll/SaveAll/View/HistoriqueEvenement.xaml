@@ -47,10 +47,13 @@
 
             </StackLayout>
 
-                <SearchBar SearchCommand="{Binding SearchCommand}"
-                           Text="{Binding SearchText}"
-                       HorizontalOptions="FillAndExpand"
-                       Placeholder="Rechercher un evenement..."/>
+                <SearchBar
+                    x:Name="SearchBar"
+                    SearchCommand="{Binding SearchCommand}"
+                    SearchCommandParameter="{Binding SearchText}"
+                    Text="{Binding SearchText}"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Rechercher un evenement..."/>
 
             </StackLayout>
 
@@ -61,13 +64,15 @@
                          HorizontalOptions="FillAndExpand"
                          Margin="0,5,0,0">
             
-            <ListView ItemsSource="{Binding EvenementList}"
-                            VerticalOptions="FillAndExpand"
-                            VerticalScrollBarVisibility="Never"
-                            BackgroundColor="#F1F1F1"
-                            SeparatorVisibility="None"
-                            RowHeight="100"
-                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView
+               x:Name="ListView"
+                ItemsSource="{Binding SearchEvenementList}"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never"
+                BackgroundColor="#F1F1F1"
+                SeparatorVisibility="None"
+                RowHeight="100"
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
 
              
 

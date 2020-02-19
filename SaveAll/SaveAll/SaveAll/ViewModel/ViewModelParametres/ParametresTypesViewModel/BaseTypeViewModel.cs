@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MvvmHelpers;
 using SaveAll.FrameworkMVVM;
 using SaveAll.Model;
 using System;
@@ -21,106 +22,16 @@ namespace SaveAll.ViewModel.ViewModelParametres.ParametresTypesViewModel
         public TypeMembre _typeMembre;
         public TypePatrimoine _typePatrimoine;
 
-
-
-
-
-        public string NomTypeMembre
-        {
-            get => _typeMembre.NomTypeMembre;
-            set
-            {
-                _typeMembre.NomTypeMembre = value;
-                NotifyPropertyChanged("NomTypeMembre");
-            }
-        }
-
-
-        public string Nom
-        {
-            get => _typeEvenment.Nom;
-            set
-            {
-                _typeEvenment.Nom = value;
-                NotifyPropertyChanged("Nom");
-            }
-        }
-
-
-        public string NomTypeDocument
-        {
-            get => _typeDocument.NomTypeDocument;
-            set
-            {
-                _typeDocument.NomTypeDocument = value;
-                NotifyPropertyChanged("NomTypeDocument");
-            }
-        }
-
-
-        public string NomTypePatrimoine
-        {
-            get => _typePatrimoine.NomTypePatrimoine;
-            set
-            {
-                _typePatrimoine.NomTypePatrimoine = value;
-                NotifyPropertyChanged("NomTypePatrimoine");
-            }
-        }
-
-
-
-
-
+        public string NomTypeMembre { get; set; }
+        public string Nom { get; set; }
+        public string NomTypeDocument { get; set; }
+        public string NomTypePatrimoine { get; set; }
 
         // listes des 04 classes types
 
-
-        List<TypeMembre> _typemembreList;
-        public List<TypeMembre> TypeMembreList
-        {
-            get => _typemembreList;
-            set
-            {
-                _typemembreList = value;
-                NotifyPropertyChanged("TypeMembreList");
-            }
-        }
-
-
-
-        List<TypeDocument> _typeDocumentList;
-        public List<TypeDocument> TypeDocumentList
-        {
-            get => _typeDocumentList;
-            set
-            {
-                _typeDocumentList = value;
-                NotifyPropertyChanged("TypeDocumentList");
-            }
-        }
-
-
-        List<TypeEvenement> _typeEvenmentList;
-        public List<TypeEvenement> TypeEvenementList
-        {
-            get => _typeEvenmentList;
-            set
-            {
-                _typeEvenmentList = value;
-                NotifyPropertyChanged("TypeEvenementList");
-            }
-        }
-
-        List<TypePatrimoine> _typePatrimoineList;
-        public List<TypePatrimoine> TypePatrimoineList
-        {
-            get => _typePatrimoineList;
-            set
-            {
-                _typePatrimoineList = value;
-                NotifyPropertyChanged("TypePatrimoineList");
-            }
-        }
+        public ObservableRangeCollection<TypeMembre> TypeMembreList { get; set; } = new ObservableRangeCollection<TypeMembre>();
+        public ObservableRangeCollection<TypeDocument> TypeDocumentList { get; set; } = new ObservableRangeCollection<TypeDocument>();
+        public ObservableRangeCollection<TypeEvenement> TypeEvenementList { get; set; } = new ObservableRangeCollection<TypeEvenement>();
+        public ObservableRangeCollection<TypePatrimoine> TypePatrimoineList { get; set; } = new ObservableRangeCollection<TypePatrimoine>();
     }
 }

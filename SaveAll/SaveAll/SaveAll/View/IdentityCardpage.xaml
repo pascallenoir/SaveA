@@ -76,6 +76,7 @@
 
 
                         <custom:EntryRendererIdentiteHaut
+                                        x:Name="LoginEntry"
                                        Placeholder="Nom d'utilisateur"
                                        HorizontalOptions="FillAndExpand"
                                        Keyboard="Text"

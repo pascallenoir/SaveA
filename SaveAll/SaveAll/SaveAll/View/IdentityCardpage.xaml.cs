@@ -18,8 +18,14 @@ namespace SaveAll.View
             InitializeComponent();
             BindingContext = new LoginUtilisateurViewModel(Navigation);
             defaultActivityIndicator.IsVisible = false;
+
+            LoginEntry.TextChanged += LoginEntry_TextChanged;
         }
 
+        private void LoginEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
 
         void OnButtonClicked(object sender, EventArgs e)
         {

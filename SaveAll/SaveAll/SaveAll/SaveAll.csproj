@@ -31,6 +31,7 @@
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.6" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.1-beta" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Rg.Plugins.Popup-master\src\Rg.Plugins.Popup\Rg.Plugins.Popup.csproj" />

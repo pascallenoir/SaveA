@@ -43,7 +43,8 @@ namespace SaveAll.ViewModel.ViewModelEvenement
         async Task FetchEvenements()
         {
 
-            EvenementList = await App.MembreActuel.SesEvenementsAsync();            // fonctionnalite pour recuperer tous les enregistrements
+            EvenementList.Clear();
+            EvenementList.AddRange(await App.MembreActuel.SesEvenementsAsync());            // fonctionnalite pour recuperer tous les enregistrements
         }
 
 
@@ -94,19 +95,12 @@ namespace SaveAll.ViewModel.ViewModelEvenement
             await _navigation.PushAsync(pr);
         }
 
-        Evenement _selectedItem;
-        public Evenement SelectedItem
+        public Evenement SelectedItem { get; set; }
+
+        // This method gets called because of PropertyChanged.Fody. Follows the convention: void On[MyProperty]Changed()
+        void OnSelectedItemChanged()
         {
-            get => _selectedItem;
-            set
-            {
-                if (value != null)
-                {
-                    _selectedItem = value;
-                    NotifyPropertyChanged("SelectedItem");
-                    ShowEvenementsDetails(value.id) ;
-                }
-            }
+            ShowEvenementsDetails(SelectedItem.id);
         }
     }
 }
