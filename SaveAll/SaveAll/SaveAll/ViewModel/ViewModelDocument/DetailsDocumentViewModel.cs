@@ -29,7 +29,8 @@ namespace SaveAll.ViewModel.ViewModelDocument
             _navigation = navigation;
             _document = new Document();
             _document.Id = selectedDocumentID;
-            _typeDocument = new TypeDocument
+
+            TypeDocument = new TypeDocument
             {
                 IdTypeDocument = selectedDocumentID
             };
@@ -109,7 +110,7 @@ namespace SaveAll.ViewModel.ViewModelDocument
 
             _document.Fichier = StreamToByteArray(stream);
             _document = await new DatabaseHelper().DocumentByIdAsync(_document.Id);
-            _typeDocument = await new DatabaseHelper().TypeDocumentByIdAsync(_typeDocument.IdTypeDocument);
+            TypeDocument = await new DatabaseHelper().TypeDocumentByIdAsync(_document.IdTypeDoc.Value);
         }
 
 

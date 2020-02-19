@@ -14,7 +14,7 @@ namespace SaveAll.ViewModel.ViewModelDocument
     public class BaseDocumentViewModel : ViewModelDeBase
     {
         public Document _document;
-        public TypeDocument _typeDocument;
+        public TypeDocument TypeDocument { get; set; }
         public BaseParametresViewModel baseParametresViewModel;
         public ILocalNotificationService _localNotificationService;
         public INavigation _navigation;
@@ -45,6 +45,13 @@ namespace SaveAll.ViewModel.ViewModelDocument
             SearchCommand = new MvvmHelpers.Commands.Command<string>(searchText => DoSearchCommand(searchText));
 
             DocumentList.CollectionChanged += DocumentList_CollectionChanged;
+        }
+
+        // Because we're using PropertyChanged.Fody, we can use the "void On[MyProperty]Changed()" convention in order to catch PropertyChanged events and act upon them.
+        void OnTypeDocumentChanged()
+        {
+            NomTypeDocument = TypeDocument.NomTypeDocument;
+            System.Diagnostics.Debug.WriteLine($"*** Called {nameof(OnTypeDocumentChanged)}(). {nameof(TypeDocument)}.{nameof(TypeDocument.NomTypeDocument)}: {TypeDocument.NomTypeDocument}");
         }
 
         private void DocumentList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
