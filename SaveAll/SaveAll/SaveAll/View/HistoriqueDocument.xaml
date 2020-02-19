@@ -65,15 +65,14 @@
                          Margin="0,5,0,0">
             
                     <ListView
-                        x:Name="listdoc"
+                        x:Name="ListView"
                         ItemsSource="{Binding SearchDocumentList}"
                         VerticalOptions="FillAndExpand"
                         SeparatorVisibility="None"
                         BackgroundColor="#F1F1F1"
                         RowHeight="100"
                         SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                        VerticalScrollBarVisibility="Never"
-                        ItemSelected="ItemSelected">
+                        VerticalScrollBarVisibility="Never">
 
 
             <ListView.ItemTemplate>

@@ -66,14 +66,14 @@
                          Margin="0,5,0,0">
             
             <ListView
+                x:Name="ListView"
                 ItemsSource="{Binding SearchMembreList}"
                 VerticalOptions="FillAndExpand"
                 SeparatorVisibility="None"
                 RowHeight="100"
                 BackgroundColor="#F1F1F1"
                 VerticalScrollBarVisibility="Never"
-                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                ItemSelected="ItemSelected">
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
 
              
             <ListView.ItemTemplate>

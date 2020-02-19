@@ -20,16 +20,18 @@ namespace SaveAll.View
             InitializeComponent();
 
             SearchBar.TextChanged += SearchBar_TextChanged;
-        }
 
-        private void ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            ViewModel.SelectedItem = e.SelectedItem as Membre;
+            ListView.ItemSelected += ListView_ItemSelected1;
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             ViewModel.SearchCommand.Execute(e.NewTextValue);
+        }
+
+        private void ListView_ItemSelected1(object sender, SelectedItemChangedEventArgs e)
+        {
+            ViewModel.SelectedItem = e.SelectedItem as Membre;
         }
 
         protected override void OnAppearing()
