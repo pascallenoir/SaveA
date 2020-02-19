@@ -100,6 +100,7 @@ namespace SaveAll.ViewModel.ViewModelDocument
 
         public Document SelectedItem { get; set; }
 
+        // This method gets called because of PropertyChanged.Fody. Follows the convention: void On[MyProperty]Changed()
         void OnSelectedItemChanged()
         {
             ShowDocumentsDetails(SelectedItem.Id);
