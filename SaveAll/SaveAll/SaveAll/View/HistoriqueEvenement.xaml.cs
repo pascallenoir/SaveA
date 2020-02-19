@@ -12,17 +12,23 @@ namespace SaveAll.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistoriqueEvenement : ContentPage
     {
+        protected ListEvementViewModel ViewModel => BindingContext as ListEvementViewModel;
+
         public HistoriqueEvenement()
         {
             InitializeComponent();
+
+            SearchBar.TextChanged += SearchBar_TextChanged;
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ViewModel.SearchCommand.Execute(e.NewTextValue);
         }
 
         protected override void OnAppearing()
         {
-
-            this.BindingContext = new ListEvementViewModel(Navigation);
+            BindingContext = new ListEvementViewModel(Navigation);
         }
-
-       
     }
 }

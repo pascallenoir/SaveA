@@ -49,10 +49,13 @@
 
             </StackLayout>
 
-                <SearchBar SearchCommand="{Binding SearchCommand}"
-                           Text="{Binding SearchText}"
-                       HorizontalOptions="FillAndExpand"
-                       Placeholder="Rechercher un bien..."/>
+                <SearchBar
+                    x:Name="SearchBar"
+                    SearchCommand="{Binding SearchCommand}"
+                    SearchCommandParameter="{Binding SearchText}"
+                    Text="{Binding SearchText}"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Rechercher un bien..."/>
 
             </StackLayout>
 
@@ -63,13 +66,15 @@
                          HorizontalOptions="FillAndExpand"
                          Margin="0,5,0,0">
             
-            <ListView ItemsSource="{Binding PatrimoineList}"
-                            VerticalOptions="FillAndExpand"
-                            SeparatorVisibility="None"
-                            RowHeight="100"
-                            BackgroundColor="#F1F1F1"
-                            VerticalScrollBarVisibility="Never"
-                             SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView
+                ItemsSource="{Binding SearchPatrimoineList}"
+                VerticalOptions="FillAndExpand"
+                SeparatorVisibility="None"
+                RowHeight="100"
+                BackgroundColor="#F1F1F1"
+                VerticalScrollBarVisibility="Never"
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                ItemSelected="ItemSelected">
 
              
             <ListView.ItemTemplate>

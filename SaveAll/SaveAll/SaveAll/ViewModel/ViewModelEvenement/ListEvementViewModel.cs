@@ -43,7 +43,8 @@ namespace SaveAll.ViewModel.ViewModelEvenement
         async Task FetchEvenements()
         {
 
-            EvenementList = await App.MembreActuel.SesEvenementsAsync();            // fonctionnalite pour recuperer tous les enregistrements
+            EvenementList.Clear();
+            EvenementList.AddRange(await App.MembreActuel.SesEvenementsAsync());            // fonctionnalite pour recuperer tous les enregistrements
         }
 
 
@@ -94,19 +95,11 @@ namespace SaveAll.ViewModel.ViewModelEvenement
             await _navigation.PushAsync(pr);
         }
 
-        Evenement _selectedItem;
-        public Evenement SelectedItem
+        public Evenement SelectedItem { get; set; }
+
+        void OnSelectedItemChanged()
         {
-            get => _selectedItem;
-            set
-            {
-                if (value != null)
-                {
-                    _selectedItem = value;
-                    NotifyPropertyChanged("SelectedItem");
-                    ShowEvenementsDetails(value.id) ;
-                }
-            }
+            ShowEvenementsDetails(SelectedItem.id);
         }
     }
 }

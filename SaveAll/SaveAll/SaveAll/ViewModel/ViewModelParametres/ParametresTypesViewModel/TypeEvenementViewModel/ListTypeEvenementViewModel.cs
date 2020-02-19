@@ -57,7 +57,8 @@ namespace SaveAll.ViewModel.ViewModelParametres.ParametresTypesViewModel.TypeDoc
 
         async Task FetchtypeEvenement()
         {
-            TypeEvenementList = await new DatabaseHelper().TousLesTypesEvenementsAsync();            // fonctionnalite pour recuperer tous les enregistrements
+            TypeEvenementList.Clear();
+            TypeEvenementList.AddRange(await new DatabaseHelper().TousLesTypesEvenementsAsync());            // fonctionnalite pour recuperer tous les enregistrements
 
         }
 

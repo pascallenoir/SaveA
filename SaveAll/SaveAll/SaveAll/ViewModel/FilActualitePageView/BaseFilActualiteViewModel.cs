@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Rg.Plugins.Popup.Animations;
-using Rg.Plugins.Popup.Enums;
-using Rg.Plugins.Popup.Services;
 using SaveAll.FrameworkMVVM;
 using SaveAll.Model;
 using SaveAll.View;
@@ -22,71 +19,49 @@ namespace SaveAll.ViewModel.FilActualitePageView
         public TypeEvenement _typeEvenement;
         public INavigation _navigation;
 
+        public string DescriptionEvenement { get; set; }
+        public DateTime? ProchainEvenemt { get; set; }
+        public string nomEvenement { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string Adresse { get; set; }
+        public string NomTypeMembre { get; set; }
+        public string DescriptionDocument { get; set; }
+        public string nomDocument { get; set; }
+        public string NomTypeDocument { get; set; }
+        public string NomDuBien { get; set; }
+        public string NomTypePatrimoine { get; set; }
+        public string DescriptionPatrimoine { get; set; }
+        public List<Membre> MembreList { get; set; }
+        public List<Document> DocumentList { get; set; }
+        public List<Evenement> EvenementList { get; set; }
+        public List<Patrimoine> PatrimoineList { get; set; }
+        public List<TypeDocument> TypeDocumentList { get; set; }
+        public List<TypeMembre> TypeMembreList { get; set; }
+        public List<TypePatrimoine> TypePatrimoineList { get; set; }
+        public Membre SelectedMembre { get; set; }
+        public Document SelectedDocument { get; set; }
+        public Evenement SelectedEvenement { get; set; }
+        public Patrimoine SelectedPatrimoine { get; set; }
 
-
-        // information de la classe membre
-
-        public string Nom
+        void OnSelectedMembreChanged()
         {
-            get => _membre.Nom;
-            set
-            {
-                _membre.Nom = value;
-                NotifyPropertyChanged("Nom");
-            }
+            ShowMembreDetails(SelectedMembre.Id);
         }
 
-
-        public string Prenom
+        void OnSelectedDocumentChanged()
         {
-            get => _membre.Prenom;
-            set
-            {
-                _membre.Prenom = value;
-                NotifyPropertyChanged("Prenom");
-            }
+            ShowDocumentsDetails(SelectedDocument.Id);
         }
 
-
-        public string Adresse
+        void OnSelectedEvenementChanged()
         {
-            get => _membre.Adresse;
-            set
-            {
-                _membre.Adresse = value;
-                NotifyPropertyChanged("Adresse");
-            }
+            ShowEvenementDetails(SelectedEvenement.id);
         }
 
-
-        public string NomTypeMembre
+        void OnSelectedPatrimoineChanged()
         {
-            get => _typeMembre.NomTypeMembre;
-            set
-            {
-                _typeMembre.NomTypeMembre = value;
-                NotifyPropertyChanged("NomTypeMembre");
-            }
-        }
-
-
-
-        Membre selectedMembre;
-        public Membre SelectedMembre
-        {
-            get
-            {
-                return selectedMembre;
-            }
-            set
-            {
-                if (selectedMembre != value)
-                {
-                    selectedMembre = value;
-                    NotifyPropertyChanged("SelectedMembre");
-                    ShowMembreDetails(value.Id);
-                }
-            }
+            ShowPatrimoineDetails(SelectedPatrimoine.Id);
         }
 
         [Obsolete]
@@ -96,65 +71,6 @@ namespace SaveAll.ViewModel.FilActualitePageView
             _navigation.PushAsync(pr);
         }
 
-
-        // informations de la classe document
-
-        public string DescriptionDocument
-        {
-            get => _document.DescriptionDocument;
-            set
-            {
-                _document.DescriptionDocument = value;
-                NotifyPropertyChanged("DescriptionDocument");
-            }
-        }
-
-        public string nomDocument
-        {
-            get => _document.nomDocument;
-
-            set
-            {
-                _document.nomDocument = value;
-                NotifyPropertyChanged("nomDocument");
-            }
-        }
-
-        public string NomTypeDocument
-        {
-            get => _typeDocument.NomTypeDocument;
-
-            set
-            {
-                _typeDocument.NomTypeDocument = value;
-                NotifyPropertyChanged("NomTypeDocument");
-            }
-        }
-
-
-
-
-        Document selectedDocument;
-        public Document SelectedDocument
-        {
-            get
-            {
-                return selectedDocument;
-            }
-            set
-            {
-                if (selectedDocument != value)
-                {
-                    selectedDocument = value;
-                    NotifyPropertyChanged("SelectedDocument");
-                    ShowDocumentsDetails(value.Id);
-                }
-            }
-        }
-
-
-
-
         [Obsolete]
         private void ShowDocumentsDetails(int selectedDocumentID)
         {
@@ -162,222 +78,18 @@ namespace SaveAll.ViewModel.FilActualitePageView
             _navigation.PushAsync(pr);
         }
 
-
-        // information de la classe evenement
-
-        public string DescriptionEvenement
-        {
-            get => _evenement.DescriptionEvenement;
-            set
-            {
-                _evenement.DescriptionEvenement = value;
-                NotifyPropertyChanged("DescriptionEvenement");
-            }
-        }
-
-
-        public DateTime? ProchainEvenemt
-        {
-            get => _evenement.ProchainEvenemt;
-            set
-            {
-                _evenement.ProchainEvenemt = value;
-                NotifyPropertyChanged("ProchainEvenemt");
-            }
-        }
-
-        public string nomEvenement
-        {
-            get => _evenement.nomEvenement;
-
-            set
-            {
-                _evenement.nomEvenement = value;
-                NotifyPropertyChanged("nomEvenement");
-            }
-        }
-
-      
-
-        Evenement selectedEvenement;
-        public Evenement SelectedEvenement
-        {
-            get
-            {
-                return selectedEvenement;
-            }
-            set
-            {
-                if (selectedEvenement != value)
-                {
-                    selectedEvenement = value;
-                    NotifyPropertyChanged("SelectedEvenement");
-                    ShowEvenementDetails(value.id);
-                }
-            }
-        }
-
         [Obsolete]
         private void ShowEvenementDetails(int selectedEvenementID)
         {
             var pr = new DetailsEvenementPageView(selectedEvenementID);
-            
             _navigation.PushAsync(pr);
-        }
-
-
-        //Informartions de la classe patrimoine
-
-        public string NomDuBien
-        {
-            get => _patrimoine.NomDuBien;
-
-            set
-            {
-                _patrimoine.NomDuBien = value;
-                NotifyPropertyChanged("NomDuBien");
-            }
-        }
-
-
-        public string NomTypePatrimoine
-        {
-            get => _typePatrimoine.NomTypePatrimoine;
-
-            set
-            {
-                _typePatrimoine.NomTypePatrimoine = value;
-                NotifyPropertyChanged("NomTypePatrimoine");
-            }
-        }
-
-
-        public string DescriptionPatrimoine
-        {
-            get => _patrimoine.DescriptionPatrimoine;
-
-            set
-            {
-                _patrimoine.DescriptionPatrimoine = value;
-                NotifyPropertyChanged("DescriptionPatrimoine");
-            }
-        }
-
-        Patrimoine selectedPatrimoine;
-        public Patrimoine SelectedPatrimoine
-        {
-            get
-            {
-                return selectedPatrimoine;
-            }
-            set
-            {
-                if (selectedPatrimoine != value)
-                {
-                    selectedPatrimoine = value;
-                    NotifyPropertyChanged("SelectedPatrimoine");
-                    ShowPatrimoineDetails(value.Id);
-                }
-            }
         }
 
         [Obsolete]
         private void ShowPatrimoineDetails(int selectedPatrimoineID)
         {
             var pr = new DetailsPatrimoinePageView(selectedPatrimoineID);
-            
             _navigation.PushAsync(pr);
         }
-
-
-        // listes des 04 classes 
-
-
-        List<Membre> _membreList;
-        public List<Membre> MembreList
-        {
-            get => _membreList;
-            set
-            {
-                _membreList = value;
-                NotifyPropertyChanged("MembreList");
-            }
-        }
-
-
-
-        List<Document> _documentList;
-        public List<Document> DocumentList
-        {
-            get => _documentList;
-            set
-            {
-                _documentList = value;
-                NotifyPropertyChanged("DocumentList");
-            }
-        }
-
-
-        List<Evenement> _evenementList;
-        public List<Evenement> EvenementList
-        {
-            get => _evenementList;
-            set
-            {
-                _evenementList = value;
-                NotifyPropertyChanged("EvenementList");
-            }
-        }
-
-        List<Patrimoine> _patrimoineList;
-        public List<Patrimoine> PatrimoineList
-        {
-            get => _patrimoineList;
-            set
-            {
-                _patrimoineList = value;
-                NotifyPropertyChanged("PatrimoineList");
-            }
-        }
-
-
-        // listes des types des 04 classes
-
-        List<TypeDocument> _typedocumentList;
-        public List<TypeDocument> TypeDocumentList
-        {
-            get => _typedocumentList;
-            set
-            {
-                _typedocumentList = value;
-                NotifyPropertyChanged("TypeDocumentList");
-            }
-        }
-
-
-        List<TypeMembre> _typemembreList;
-        public List<TypeMembre> TypeMembreList
-        {
-            get => _typemembreList;
-            set
-            {
-                _typemembreList = value;
-                NotifyPropertyChanged("TypeMembreList");
-            }
-        }
-
-
-        List<TypePatrimoine> _typepatrimoineList;
-        public List<TypePatrimoine> TypePatrimoineList
-        {
-            get => _typepatrimoineList;
-            set
-            {
-                _typepatrimoineList = value;
-                NotifyPropertyChanged("TypePatrimoineList");
-            }
-        }
-
-
     }
 }

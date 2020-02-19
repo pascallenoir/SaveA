@@ -56,7 +56,8 @@ namespace SaveAll.ViewModel.ViewModelParametres.ParametresTypesViewModel.TypeDoc
 
         async Task FetchtypePatrimoine()
         {
-            TypePatrimoineList = await new DatabaseHelper().TousLesTypesPatrimoines();            // fonctionnalite pour recuperer tous les enregistrements
+            TypePatrimoineList.Clear();
+            TypePatrimoineList.AddRange(await new DatabaseHelper().TousLesTypesPatrimoines());            // fonctionnalite pour recuperer tous les enregistrements
 
         }
 

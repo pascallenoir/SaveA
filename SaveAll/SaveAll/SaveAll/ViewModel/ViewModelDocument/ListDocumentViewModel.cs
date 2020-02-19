@@ -17,14 +17,13 @@ namespace SaveAll.ViewModel.ViewModelDocument
         public ICommand AddCommand { get; private set; }
         public ICommand DeleteAllCommand { get; private set; }
         public ICommand AjouterCommand { get; private set; }
-        public ICommand SearchCommand { get; private set; }
 
 
         public ListDocumentViewModel(INavigation navigation)
         {
             _navigation = navigation;
 
-          
+
             DeleteAllCommand = new Command(async () => await DeleteAllDocuments());
             AjouterCommand = new Command(async () => await AddNewDocumentSecond());
 
@@ -36,10 +35,10 @@ namespace SaveAll.ViewModel.ViewModelDocument
 
             FetchDocumentsAsync();
 
-            
+
         }
 
-       
+
 
         /// <summary>
         /// Afiicher la liste des documents 
@@ -48,10 +47,10 @@ namespace SaveAll.ViewModel.ViewModelDocument
 
         async Task FetchDocumentsAsync()
         {
+            DocumentList.Clear();
+            DocumentList.AddRange(await App.MembreActuel.SesDocuments());            // fonctionnalite pour recuperer tous les enregistrements
 
-            DocumentList = await App.MembreActuel.SesDocuments();            // fonctionnalite pour recuperer tous les enregistrements
 
-            
         }
 
 
@@ -64,9 +63,9 @@ namespace SaveAll.ViewModel.ViewModelDocument
         async Task AddNewDocumentSecond()
         {
             var pr = new NouveauDocumentPageView();
-          
+
             await PopupNavigation.PushAsync(pr);
-            
+
         }
 
 
@@ -91,27 +90,19 @@ namespace SaveAll.ViewModel.ViewModelDocument
         /// <param name="selectedDocumentID"></param>
         /// <returns></returns>
 
-      [Obsolete]
-     async Task ShowDocumentsDetails(int selectedDocumentID)
-     {
-         var pr = new DetailsDocumentPageView(selectedDocumentID);
-        
-         await _navigation.PushAsync(pr);
-     }
-    
-     Document _selectedItem;
-     public Document SelectedItem
-     {
-         get => _selectedItem;
-         set
-         {
-             if (value != null)
-             {
-                 _selectedItem = value;
-                 NotifyPropertyChanged("SelectedItem");
-                 ShowDocumentsDetails(value.Id);
-             }
-         }
-     }
+        [Obsolete]
+        async Task ShowDocumentsDetails(int selectedDocumentID)
+        {
+            var pr = new DetailsDocumentPageView(selectedDocumentID);
+
+            await _navigation.PushAsync(pr);
+        }
+
+        public Document SelectedItem { get; set; }
+
+        void OnSelectedItemChanged()
+        {
+            ShowDocumentsDetails(SelectedItem.Id);
+        }
     }
 }

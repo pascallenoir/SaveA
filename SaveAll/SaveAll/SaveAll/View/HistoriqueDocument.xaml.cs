@@ -13,19 +13,23 @@ namespace SaveAll.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistoriqueDocument : ContentPage
     {
+        protected ListDocumentViewModel ViewModel => BindingContext as ListDocumentViewModel;
 
         public HistoriqueDocument()
         {
             InitializeComponent();
+
+            SearchBar.TextChanged += SearchBar_TextChanged;
         }
 
-        
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ViewModel.SearchCommand.Execute(e.NewTextValue);
+        }
+
         protected override void OnAppearing()
         {
-            
-            this.BindingContext = new ListDocumentViewModel(Navigation);
+            BindingContext = new ListDocumentViewModel(Navigation);
         }
-
-       
     }
 }

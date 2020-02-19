@@ -47,11 +47,13 @@
 
             </StackLayout>
 
-                <SearchBar x:Name="searchBar"
-                           SearchCommand="{Binding SearchCommand}"
-                           Text="{Binding SearchText}"
-                       HorizontalOptions="FillAndExpand"
-                       Placeholder="Rechercher un document..."/>
+                <SearchBar
+                    x:Name="SearchBar"
+                    SearchCommand="{Binding SearchCommand}"
+                    SearchCommandParameter="{Binding SearchText}"
+                    Text="{Binding SearchText}"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Rechercher un document..."/>
 
         </StackLayout>
 
@@ -62,14 +64,16 @@
                          HorizontalOptions="FillAndExpand"
                          Margin="0,5,0,0">
             
-                    <ListView x:Name="listdoc"
-                            ItemsSource="{Binding DocumentList}"
-                            VerticalOptions="FillAndExpand"
-                            SeparatorVisibility="None"
-                            BackgroundColor="#F1F1F1"
-                            RowHeight="100"
-                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                            VerticalScrollBarVisibility="Never">
+                    <ListView
+                        x:Name="listdoc"
+                        ItemsSource="{Binding SearchDocumentList}"
+                        VerticalOptions="FillAndExpand"
+                        SeparatorVisibility="None"
+                        BackgroundColor="#F1F1F1"
+                        RowHeight="100"
+                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                        VerticalScrollBarVisibility="Never"
+                        ItemSelected="ItemSelected">
 
 
             <ListView.ItemTemplate>
