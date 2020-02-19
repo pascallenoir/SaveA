@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentValidation;
 using MvvmHelpers;
+using PropertyChanged;
 using SaveAll.FrameworkMVVM;
 using SaveAll.Interfaces;
 using SaveAll.Model;
@@ -22,7 +23,12 @@ namespace SaveAll.ViewModel.ViewModelDocument
 
         public string nomDocument { get; set; }
         public List<TypeDocument> TypedocumentList { get; set; }
-        public string NomTypeDocument { get; set; }
+
+        // You can use property attributes from PropertyChanged.Fody to chain together properties.
+        // In this case, I'm telling NomTypeDocument that it should fire a Propertychanged event each time that TypeDocument changes, and that it should get its value from TypeDocument.NomTypeDocument.
+        [DependsOn(nameof(TypeDocument))] 
+        public string NomTypeDocument => TypeDocument.NomTypeDocument;
+
         public string Code { get; set; }
         public bool? Periodicite { get; set; }
         public string DescriptionDocument { get; set; }
@@ -48,10 +54,21 @@ namespace SaveAll.ViewModel.ViewModelDocument
         }
 
         // Because we're using PropertyChanged.Fody, we can use the "void On[MyProperty]Changed()" convention in order to catch PropertyChanged events and act upon them.
-        void OnTypeDocumentChanged()
+        // I commented this out in order to demonstrate the [DependsOn()] attribute above.
+        // Either of the two strategies work well. Using attributes is syntactically compact and simple, whereas On[MyProperty]Changed is robust and extendable.
+        // Excercise caution when using the two different strategies in tandem.
+
+        //void OnTypeDocumentChanged()
+        //{
+        //    NomTypeDocument = TypeDocument.NomTypeDocument;
+        //    System.Diagnostics.Debug.WriteLine($"*** Called {nameof(OnTypeDocumentChanged)}(). {nameof(TypeDocument)}.{nameof(TypeDocument.NomTypeDocument)}: {TypeDocument.NomTypeDocument}");
+        //}
+
+        // This method will not get called if [DependsOn(nameof(TypeDocument))] is applied to the NomTypeDocument property.
+        // But if you removed [DependsOn(nameof(TypeDocument))] from NomTypeDocument property and made it a get/set, this method would fire.
+        void OnNomTypeDocumentChanged()
         {
-            NomTypeDocument = TypeDocument.NomTypeDocument;
-            System.Diagnostics.Debug.WriteLine($"*** Called {nameof(OnTypeDocumentChanged)}(). {nameof(TypeDocument)}.{nameof(TypeDocument.NomTypeDocument)}: {TypeDocument.NomTypeDocument}");
+            System.Diagnostics.Debug.WriteLine($"{nameof(OnNomTypeDocumentChanged)}(): NomTypeDocument = {NomTypeDocument}");
         }
 
         private void DocumentList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
